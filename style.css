@@ -7,7 +7,7 @@ body {
   border: 0;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  
   /* No floating content on sides */
   --tw-bg-opacity: 1;
   background-color: #F7F7F7;
