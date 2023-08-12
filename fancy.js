@@ -49,6 +49,10 @@ navLinks.forEach(link => {
         document.getElementById(menu_id).classList.add("active-nav");
       }
       burgerMenu.classList.remove("active");
+
+      // Add to URL without reloading the page
+      history.pushState(null, null, targetId);
+      
       
       // Use GSAP to create a fading animation
       gsap.to(sections, {
