@@ -138,13 +138,44 @@ burgerMenu.addEventListener("click", function () {
   }
 });
 
-// Clone and append the logos for continuous animation
-const cloneLogos = partnerLogos.cloneNode(true);
-partnerLogos.appendChild(cloneLogos);
+function switchSectionBasedOnHash() {
+  const hash = window.location.hash; // Get the hash from the URL
+  const targetSection = document.querySelector(hash); // Find the section with the matching ID
+  
+  if (targetSection) {
+    // Hide all sections
+    sections.forEach(section => {
+      section.style.display = "none";
+    });
 
-// Calculate the total width of the logos
-const logoWidth = partnerLogos.firstElementChild.clientWidth;
-const totalWidth = logoWidth * partnerLogos.children.length;
+    navLinks.forEach(link => {
+      link.classList.remove("active-nav");
+    });
 
-// Set the width of the container to ensure continuous scrolling
-partnerLogos.style.width = `${totalWidth}px`;
+    let menu_id = hash.replace("#", "");
+    
+    if (menu_id !== "" && menu_id !== "nav-0" && menu_id !== "home") {
+      document.getElementById(menu_id).classList.add("active-nav");
+      main.classList.remove("mt-5");
+      main.classList.add("align-items-flex-start");
+    } else {
+      main.classList.add("mt-5");
+      main.classList.remove("align-items-flex-start");
+    }
+
+    // Show the target section
+    targetSection.style.display = "block";
+    targetSection.style.zIndex = 1;
+    gsap.to(targetSection, {
+      opacity: 1,
+      duration: 0.15,
+    });
+  }
+}
+
+
+// Listen for changes in the URL hash
+window.addEventListener('hashchange', switchSectionBasedOnHash);
+
+// Initial section switch based on current URL hash
+switchSectionBasedOnHash();
