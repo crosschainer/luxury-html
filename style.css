@@ -304,6 +304,8 @@ li {
 }
 
 header>div {
+  
+
   position: relative;
 }
 
@@ -363,7 +365,7 @@ header>div {
   }
 
   nav>div {
-    display: flex;
+    display: none;
     flex-grow: 1;
     justify-content: flex-end;
 
@@ -407,7 +409,7 @@ header>div {
 
   nav>div {
     width: 100%;
-    display: flex;
+    display: none;
     justify-content: center;
 
   }
