@@ -12,6 +12,8 @@ const mobileNav = document.querySelector("nav.flex-grow-1");
 const header = document.querySelector("header");
 const main = document.querySelector("main");
 
+const partnerLogos = document.querySelector('.partner-logos');
+
 // on dom content loaded
 document.addEventListener("DOMContentLoaded", function () {
   // load anim css
@@ -135,3 +137,14 @@ burgerMenu.addEventListener("click", function () {
     });
   }
 });
+
+// Clone and append the logos for continuous animation
+const cloneLogos = partnerLogos.cloneNode(true);
+partnerLogos.appendChild(cloneLogos);
+
+// Calculate the total width of the logos
+const logoWidth = partnerLogos.firstElementChild.clientWidth;
+const totalWidth = logoWidth * partnerLogos.children.length;
+
+// Set the width of the container to ensure continuous scrolling
+partnerLogos.style.width = `${totalWidth}px`;
