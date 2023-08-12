@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxury</title>
+    <link rel="stylesheet" href="style.css"> 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   
+    <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/110/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three-js-csg/72.0.0/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three-csg@1.0.0/index.min.js"></script>
+    
+
+</head>
+
+<body>
+    <header>
+        <div class="logo-container"> 
+            <a class="center-nav nav-link section-link" id="nav-0" href="#home">Luxury</a>
+            
+        </div>
+        <div class="burger-menu">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+        <nav class="flex-grow-1">
+            <a class="nav-link section-link" href="#what-is-luxury" id="nav-1">What is Luxury?</a>
+            <a class="nav-link section-link" href="#staking" id="nav-2">Staking</a>
+            <a class="nav-link section-link" href="#lending-borrowing" id="nav-3">Lending & Borrowing</a>
+            <div>
+                <a href="#">Connect Wallet</a>
+            </div>
+        </nav>
+        
+    </header>
+
+    <main class="mt-5" style="display:flex">
+        <section class="content" id="home">
+            <div id="webgl-container"></div>
+            <h1>Welcome to Luxury</h1>
+            <p style="font-weight:normal">Discover a world of financial stability and passive income.</p>
+            <div class="text-center">
+                <a href="#what-is-luxury" class="cta-button nav-link section-link">Learn More</a>
+            </div>
+            
+        </section>
+        <section class="content" id="what-is-luxury">
+            <h1>What is Luxury?</h1>
+            <p>Luxury is a decentralized finance (DeFi) platform that allows users to earn interest on their
+                cryptocurrency and Luxurycoin holdings.</p>
+                <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+                <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
+        </section>
+        <section class="content" id="staking">
+            <h1>Staking</h1>
+            <p>Luxury allows users to earn passive income on their cryptocurrency and Luxurycoin holdings.</p>
+            <div class="cards">
+                <div class="card" id="deposit-card">
+                    <div class="card-header">
+                        <h2>Deposit</h2>
+                    </div>
+                    <input type="number" step="0.01" min="0" lang="en" placeholder="Enter Amount">
+                    <div class="data-content"> <!-- Add a new div for data content -->
+                        <p>Available funds: $800</p>
+                    </div>
+                    <div class="text-center card-button">
+                        <a href="#" class="cta-button nav-link">Deposit</a>
+                    </div>
+                </div>
+                <div class="card" id="withdraw-card">
+                    <div class="card-header">
+                        <h2>Withdraw</h2>
+                    </div>
+                    <input type="number" step="0.01" min="0" lang="en" placeholder="Enter Amount">
+                    <div class="data-content"> <!-- Add a new div for data content -->
+                        <p>Staked funds: $0</p>
+                    </div>
+                    <div class="text-center card-button">
+                        <a href="#" class="cta-button nav-link">Withdraw</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="content" id="lending-borrowing">
+            <h1>Lending & Borrowing</h1>
+            <p>Luxury allows users to lend and borrow cryptocurrency and Luxurycoins. </p>
+            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+                <ul>
+                    <li>Morbi in sem quis dui placerat ornare. Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu. Cras consequat.</li>
+                    <li>Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus.</li>
+                    <li>Phasellus ultrices nulla quis nibh. Quisque a lectus. Donec consectetuer ligula vulputate sem tristique cursus. Nam nulla quam, gravida non, commodo a, sodales sit amet, nisi.</li>
+                    <li>Pellentesque fermentum dolor. Aliquam quam lectus, facilisis auctor, ultrices ut, elementum vulputate, nunc.</li>
+                 </ul>
+                 <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>                
+        </section>
+    </main>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/gsap.min.js"></script>
+    <script src="fancy.js"></script>
+    <script src="webgl.js"></script>
+</body>
+
+</html>

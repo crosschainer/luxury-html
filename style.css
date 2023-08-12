@@ -1,0 +1,414 @@
+/* Global Styles */
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  border: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  /* No floating content on sides */
+  --tw-bg-opacity: 1;
+  background-color: #F7F7F7; /* Off-white background */
+  color: #222; /* Slightly softened black text */
+  overscroll-behavior-y: contain;
+  letter-spacing: 1px;
+  font-size: 18px;
+  overflow-x: hidden;
+  font-family: 'Questrial', sans-serif;
+  -webkit-font-smoothing: antialiased; /* For Chrome and Safari */
+  -moz-osx-font-smoothing: grayscale; /* For Firefox on macOS */
+}
+
+.flex-grow-1 {
+  flex-grow: 1;
+}
+
+/* Footer Styles */
+header {
+  background-color: #F7F7F7;
+  color: black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 10px;
+  position: sticky;
+  bottom: 0;
+  --tw-bg-opacity: 1;
+  border-bottom: 1px solid rgba(34, 34, 34, 0.1);
+}
+
+header p {
+  margin: 0;
+  flex-grow: 1; /* Allow the paragraph to take up available space */
+  text-align: center; /* Center the paragraph horizontally */
+}
+
+nav {
+  display: flex;
+}
+
+.burger-menu {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    gap: 5px;
+}
+
+.bar {
+    width: 25px;
+    height: 3px;
+    background-color: #222;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.active .bar:first-child {
+    transform: translateY(6px) rotate(45deg);
+}
+
+.active .bar:last-child {
+    transform: translateY(-10px) rotate(-45deg);
+}
+
+.active .bar:nth-child(2) {
+    opacity: 0;
+}
+
+
+nav a,
+.center-nav {
+  text-decoration: none;
+  margin: 5px 10px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: #222; /* Slightly softened black text */
+  border: 1px solid rgba(34, 34, 34, 0.0);
+  transition: border-color 0.3s ease; /* Add a smooth transition for border changes */
+}
+
+
+
+nav a:hover {
+  border-color: rgba(34, 34, 34, 0.3); /* Darker border color on hover */
+}
+
+.active-nav {
+  border-color: rgba(34, 34, 34, 0.3); /* Darker border color on hover */
+}
+
+.center-nav {
+
+  display: flex;
+  justify-content: center;
+  font-weight: bold;
+  border: 0;
+}
+
+/* Header Styles */
+header {
+  /* Your header styles */
+}
+
+/* Main Content Styles */
+main {
+  flex: 1;
+  padding: 20px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  padding-bottom: 30px;
+}
+
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #F7F7F7;
+}
+
+.content {
+  opacity: 0;
+  display:none;
+  transition: max-width 0.5s ease; /* Add transition for opacity and max-width */
+  max-width: 800px; /* Adjust the maximum width as needed */
+  padding: 0 20px; /* Add some padding for better spacing */
+  box-sizing: border-box; /* Include padding in the width calculation */
+}
+
+/* Center the first paragraph */
+p:first-of-type {
+  text-align: center;
+  font-weight: bold;
+}
+
+/* Left-align all other paragraphs */
+p:not(:first-of-type) {
+  text-align: justify;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.content h1 {
+  font-size: 36px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.content p {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.cta-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #222;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  margin: 0 auto;
+}
+
+.cta-button:hover {
+  background-color: #444;
+}
+
+ul{
+  text-align: left;
+}
+li{
+  text-align: left;
+  margin-bottom: 5px;
+}
+
+/* Card Styles */
+.cards {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Add some space between cards */
+    margin-top: 30px;
+}
+
+.card {
+    padding: 20px;
+   
+    border: 1px solid rgba(34, 34, 34, 0.1);
+    border-radius: 10px;
+    
+    width: 100%; /* Set to 100% width by default */
+    max-width: 250px; /* Add a maximum width */
+    transition: transform 0.3s ease; /* Add a subtle transformation on hover */
+}
+
+#webgl-container{
+  max-width: 200px;
+  max-height: 200px;
+  display: flex;
+    justify-content: center;
+    margin: auto;
+}
+
+/* Input Styles */
+.card input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid rgba(34, 34, 34, 0.1);
+    border-radius: 5px;
+    font-size: 16px;
+    color: #222; /* Slightly softened black text */
+    transition: border-color 0.3s ease; /* Add a smooth transition for border changes */
+    box-sizing: border-box; /* Include padding and border in the width calculation */
+    margin-bottom: 5px;
+}
+
+.card input:hover,
+.card input:focus {
+    border-color: rgba(34, 34, 34, 0.3); /* Darker border color on hover and focus */
+    outline: none; /* Remove default focus outline */
+}
+
+.card-header {
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(34, 34, 34, 0.1);
+}
+
+.card-header h2 {
+    font-size: 16px;
+    color: #222; /* Slightly softened black text */
+}
+.card-button {
+    margin-top: 10px; /* Add margin to create spacing above button */
+}
+.data-content {
+    margin-bottom: 5px; /* Adjust the margin below the data content */
+}
+.data-content p{
+  font-size: 14px;
+  text-align: left;
+}
+
+#home{
+    display: block;
+    opacity: 1;
+}
+
+.s-shape{
+ opacity:0;
+}
+header > div{
+  position: relative;
+}
+.align-items-flex-start{
+  align-items: flex-start;
+}
+
+/* Roadmap Styles */
+#roadmap {
+  text-align: center;
+  padding: 40px 0;
+}
+
+.roadmap-container {
+  display: grid;
+  gap: 40px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.roadmap-step {
+  
+  padding: 30px;
+  border: 1px solid rgba(34, 34, 34, 0.1);
+  border-radius: 10px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+}
+
+.roadmap-step:hover {
+  transform: translateY(-5px);
+}
+
+.roadmap-date {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #222;
+}
+
+.roadmap-title {
+  font-size: 24px;
+  margin-bottom: 15px;
+  color: #222;
+}
+
+.roadmap-step p {
+  font-size: 16px;
+  color: #666;
+  line-height: 1.5;
+}
+
+@media (min-width: 768px){
+  .mt-5{
+    margin-top: -4.5rem;
+  }
+  
+  nav > div {
+    display: flex;
+    flex-grow: 1;
+    justify-content: flex-end;
+
+}
+
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .content h1{
+    margin-top: 0;
+  }
+  .active-header{
+    height: 100vh;
+  }
+  .roadmap-container {
+    grid-template-columns: 1fr;
+}
+  .mt-5{
+    margin-top: -5.5rem;
+  }
+  header {
+    flex-direction: column;
+    text-align: center;
+    padding: 10px;
+    z-index: 2;
+    padding-bottom: 30px;
+  }
+  .logo-container{
+    margin-bottom: 10px;
+  }
+   .burger-menu {
+        display: flex;
+    }
+    nav > div {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+
+    }
+      
+    
+  nav {
+    display: none;
+        flex-direction: column;
+        align-items: center;
+        background-color: #F7F7F7;
+        position: relative;
+        margin-top: 15px;
+        left: 0;
+        width: 100%;
+        opacity:0;
+        
+  }
+   nav.active {
+        display: flex;
+    }
+
+  nav a {
+   display: block;
+        padding: 10px;
+        border: none;
+        text-align: center;
+        width: 100%;
+  }
+  
+  
+
+  .center-nav {
+    margin: 10px auto;
+    font-weight: bold;
+  }
+
+  .cards {
+        flex-direction: column; /* Stack cards vertically on mobile */
+        align-items: center; /* Center-align cards on mobile */
+    }
+
+    .card {
+        max-width: 100%; /* Full width on mobile */
+        margin: 0 0 20px 0; /* Add spacing around stacked cards */
+        padding: 15px; /* Reduce padding for more compact mobile layout */
+    }
+   
+    
+}
