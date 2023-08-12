@@ -51,6 +51,10 @@ header p {
   /* Center the paragraph horizontally */
 }
 
+h2{
+  font-size: 1rem;
+}
+
 nav {
   display: flex;
 }
