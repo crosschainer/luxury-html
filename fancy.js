@@ -52,7 +52,7 @@ navLinks.forEach(link => {
 
       // Add to URL without reloading the page
       history.pushState(null, null, targetId);
-      
+
       
       // Use GSAP to create a fading animation
       gsap.to(sections, {
@@ -156,9 +156,11 @@ function switchSectionBasedOnHash() {
       link.classList.remove("active-nav");
     });
 
-    let menu_id = hash.replace("#", "");
+    let section_id = hash.replace("#", "");
+    let menu_id = document.querySelector(`[href="${hash}"]`).id;
     
     if (menu_id !== "" && menu_id !== "nav-0" && menu_id !== "home") {
+      console.log(menu_id);
       document.getElementById(menu_id).classList.add("active-nav");
       main.classList.remove("mt-5");
       main.classList.add("align-items-flex-start");
