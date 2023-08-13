@@ -172,7 +172,7 @@ p:first-of-type {
 
 /* Left-align all other paragraphs */
 p:not(:first-of-type) {
-  text-align: justify;
+  text-align: left;
 }
 
 .text-center {
@@ -229,12 +229,44 @@ li {
   border: 1px solid rgba(34, 34, 34, 0.1);
   border-radius: 10px;
 
-  width: 100%;
+  width: 400px;
   /* Set to 100% width by default */
-  max-width: 250px;
+  max-width: 100%;
   /* Add a maximum width */
   transition: transform 0.3s ease;
   /* Add a subtle transformation on hover */
+}
+
+.input-group-form{
+  font-size: 14px;
+    margin-bottom: 10px;
+    padding-top: 10px;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.swap-icon{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+
+}
+.swap-icon img{
+  max-width: 32px;
+}
+
+.input-image{
+  max-width: 32px;
+  margin-left: 16px;
+}
+
+.input-group-with-image-right{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
 }
 
 #webgl-container {
@@ -259,7 +291,7 @@ li {
   /* Add a smooth transition for border changes */
   box-sizing: border-box;
   /* Include padding and border in the width calculation */
-  margin-bottom: 5px;
+  
 }
 
 .card input:hover,
