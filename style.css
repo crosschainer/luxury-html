@@ -243,7 +243,33 @@ li {
     padding-top: 10px;
     display: flex;
     justify-content: space-between;
+}
 
+.data {
+  display:flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.slippage-cog{
+  max-width: 16px;
+  cursor: pointer;
+}
+.settings-span{
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.btns-swap{
+
+  margin-top: 30px;
+  display: flex;
+
+}
+
+.swap-button{
+  width: 100%;
+  text-align: center;
 }
 
 .swap-icon{
@@ -251,6 +277,7 @@ li {
   margin-bottom: 10px;
   display: flex;
   justify-content: center;
+  cursor: pointer;
 
 }
 .swap-icon img{
@@ -260,6 +287,7 @@ li {
 .input-image{
   max-width: 32px;
   margin-left: 16px;
+  cursor: pointer;
 }
 
 .input-group-with-image-right{
