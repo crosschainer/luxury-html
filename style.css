@@ -141,6 +141,8 @@ main {
   display: flex;
   align-items: center;
   padding-bottom: 30px;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .main {
@@ -221,6 +223,8 @@ li {
   gap: 20px;
   /* Add some space between cards */
   margin-top: 30px;
+  width: 400px;
+    max-width: 100%;
 }
 
 .card {
