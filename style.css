@@ -284,6 +284,13 @@ li {
   max-width: 32px;
 }
 
+#from-balance{
+  cursor: pointer;
+}
+#to-balance{
+  cursor: pointer;
+}
+
 .input-image{
   max-width: 32px;
   margin-left: 16px;
