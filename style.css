@@ -229,9 +229,9 @@ li {
   border: 1px solid rgba(34, 34, 34, 0.1);
   border-radius: 10px;
 
-  width: 400px;
+  width: 100%;
   /* Set to 100% width by default */
-  max-width: 100%;
+  max-width: 400px;
   /* Add a maximum width */
   transition: transform 0.3s ease;
   /* Add a subtle transformation on hover */
@@ -316,7 +316,7 @@ li {
   gap: 30px;
   padding: 10px 20px 10px 20px;
   border: 1px solid rgba(34, 34, 34, 0.1);
-
+  white-space: nowrap;
   transition: transform 0.3s ease;
 
   align-items: center;
