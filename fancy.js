@@ -68,11 +68,11 @@ navLinks.forEach(link => {
           
 
           if(targetSection.id == "home") {
-            main.classList.add("mt-5");
+            
             main.classList.remove("align-items-flex-start")
           }
           else {
-            main.classList.remove("mt-5");
+            
             main.classList.add("align-items-flex-start")
           }
           // Show the target section and fade it in
@@ -162,10 +162,10 @@ function switchSectionBasedOnHash() {
     if (menu_id !== "" && menu_id !== "nav-0" && menu_id !== "home") {
       console.log(menu_id);
       document.getElementById(menu_id).classList.add("active-nav");
-      main.classList.remove("mt-5");
+      
       main.classList.add("align-items-flex-start");
     } else {
-      main.classList.add("mt-5");
+      
       main.classList.remove("align-items-flex-start");
     }
 
