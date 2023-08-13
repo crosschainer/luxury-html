@@ -192,5 +192,7 @@ switchSectionBasedOnHash();
 poolRows.forEach(row => {
   row.addEventListener('click', () => {
       row.classList.toggle('show-details');
+      // Rotate svg arrow 45deg
+      row.querySelector('.arrow').classList.toggle('arrow-rotate');
   });
 });

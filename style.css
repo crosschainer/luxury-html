@@ -310,9 +310,9 @@ li {
 
 .pool-rows-headers{
   display: grid;
-  grid-template-columns: repeat(6, 1fr); /* Divide into two columns */
+  grid-template-columns: repeat(5, 1fr); /* Divide into two columns */
   gap: 30px;
-  padding: 5px 20px 5px 20px;
+  padding: 10px 20px 10px 20px;
   border: 1px solid rgba(34, 34, 34, 0.1);
 
   transition: transform 0.3s ease;
@@ -332,16 +332,20 @@ li {
   align-items: center;
   cursor: pointer;
 }
+.arrow-rotate{
+  transform: rotate(90deg);
+}
 .pool-row {
   display: grid;
-  grid-template-columns: repeat(6, 1fr); /* Divide into two columns */
+  grid-template-columns: repeat(5, 1fr); /* Divide into two columns */
   gap: 30px;
-  padding: 10px 20px 10px 20px;
+  padding: 20px 20px 20px 20px;
   border: 1px solid rgba(34, 34, 34, 0.1);
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.05);
   transition: transform 0.3s ease;
   cursor: pointer;
   align-items: center;
+  max-width: 100%;
 }
 .pool-rows-headers>span{
   font-weight: bold;
@@ -354,7 +358,7 @@ li {
 
 .pool-details {
   /* Styles for the details column */
-  grid-column: span 6; /* Make it span both columns */
+  grid-column: span 5; /* Make it span both columns */
   display: none;
   padding: 20px;
   border-top: 1px solid rgba(34, 34, 34, 0.1);
