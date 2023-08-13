@@ -286,6 +286,11 @@ li {
   max-width: 32px;
 }
 
+.pool-rows-container{
+  width: 800px;
+    max-width: 100%;
+}
+
 #from-balance{
   cursor: pointer;
 }
