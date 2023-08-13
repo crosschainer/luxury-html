@@ -274,7 +274,8 @@ li {
   max-width: 100%;
   margin-top: 30px;
   display: flex;
-
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .swap-button{
