@@ -250,6 +250,7 @@ li {
   justify-content: space-between;
   margin-bottom: 10px;
   font-size: 14px;
+  gap: 10px;
 }
 .slippage-cog{
   max-width: 16px;
