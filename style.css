@@ -226,6 +226,8 @@ li {
   margin-top: 30px;
   width: 400px;
     max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .card {
@@ -268,7 +270,8 @@ li {
 }
 
 .btns-swap{
-
+  width: 400px;
+  max-width: 100%;
   margin-top: 30px;
   display: flex;
 
@@ -617,6 +620,7 @@ header>div {
     /* Stack cards vertically on mobile */
     align-items: center;
     /* Center-align cards on mobile */
+    
   }
 
   .card {
