@@ -305,7 +305,8 @@ li {
   border-top-right-radius: 10px;
 }
 .pool-row:last-child{
-  
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 
 .pool-rows-headers{
@@ -527,6 +528,7 @@ header>div {
   .content h1 {
     margin-top: 0;
   }
+  
 
   .active-header {
     height: 100vh;
@@ -611,6 +613,17 @@ header>div {
     padding: 15px;
     /* Reduce padding for more compact mobile layout */
   }
-
-
+  
+  .pool-rows-container{
+    display: grid;
+  }
+  .pool-rows{
+    overflow: auto;
+    display: grid;
+  }
+  
+  .pool-details {
+    width: 100%;
+    /* Ensure pool-details takes full width on mobile */
+  }
 }
