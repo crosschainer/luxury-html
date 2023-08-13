@@ -14,6 +14,8 @@ const main = document.querySelector("main");
 
 const partnerLogos = document.querySelector('.partner-logos');
 
+const poolRows = document.querySelectorAll('.pool-row');
+
 // on dom content loaded
 document.addEventListener("DOMContentLoaded", function () {
   // load anim css
@@ -185,3 +187,10 @@ window.addEventListener('hashchange', switchSectionBasedOnHash);
 
 // Initial section switch based on current URL hash
 switchSectionBasedOnHash();
+
+
+poolRows.forEach(row => {
+  row.addEventListener('click', () => {
+      row.classList.toggle('show-details');
+  });
+});
