@@ -7,7 +7,7 @@ body {
   border: 0;
   display: flex;
   flex-direction: column;
-  
+
   /* No floating content on sides */
   --tw-bg-opacity: 1;
   background-color: #F7F7F7;
@@ -51,7 +51,7 @@ header p {
   /* Center the paragraph horizontally */
 }
 
-h2{
+h2 {
   font-size: 1rem;
 }
 
@@ -112,13 +112,16 @@ nav a:hover {
   border-color: rgba(34, 34, 34, 0.3);
   /* Darker border color on hover */
 }
-.connect-wallet{
+
+.connect-wallet {
   border: 1px solid rgba(34, 34, 34, 0.3);
   width: auto;
 }
-.connect-wallet:hover{
+
+.connect-wallet:hover {
   border: 1px solid rgba(34, 34, 34, 0.3);
 }
+
 .center-nav {
 
   display: flex;
@@ -152,19 +155,21 @@ main {
   height: 100vh;
   background-color: #F7F7F7;
 }
-.swap-container{
+
+.swap-container {
   width: 400px;
   max-width: 100%;
   margin: auto;
 }
+
 .content {
   opacity: 0;
   display: none;
   transition: max-width 0.5s ease;
   /* Add transition for opacity and max-width */
   max-width: 100%;
-  width:800px;
-  
+  width: 800px;
+
   /* Add some padding for better spacing */
   box-sizing: border-box;
   /* Include padding in the width calculation */
@@ -227,15 +232,15 @@ li {
   gap: 20px;
   /* Add some space between cards */
   margin-top: 30px;
-  width:100%;
-  
-    margin-left: auto;
-    margin-right: auto;
+  width: 100%;
+
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .card {
   padding: 20px;
-width: 100%;
+  width: 100%;
   border: 1px solid rgba(34, 34, 34, 0.1);
   border-radius: 10px;
 
@@ -244,45 +249,47 @@ width: 100%;
   /* Add a subtle transformation on hover */
 }
 
-.input-group-form{
+.input-group-form {
   font-size: 14px;
-    margin-bottom: 10px;
-    padding-top: 10px;
-    display: flex;
-    justify-content: space-between;
+  margin-bottom: 10px;
+  padding-top: 10px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .data {
-  display:flex;
+  display: flex;
   justify-content: space-between;
   margin-bottom: 10px;
   font-size: 14px;
   gap: 10px;
 }
-.slippage-cog{
+
+.slippage-cog {
   max-width: 16px;
   cursor: pointer;
 }
-.settings-span{
+
+.settings-span {
   display: flex;
   align-items: center;
   gap: 5px;
 }
 
-.btns-swap{
-  
+.btns-swap {
+
   margin-top: 30px;
   display: flex;
   margin-left: auto;
   margin-right: auto;
 }
 
-.swap-button{
+.swap-button {
   width: 100%;
   text-align: center;
 }
 
-.swap-icon{
+.swap-icon {
   margin-top: 10px;
   margin-bottom: 10px;
   display: flex;
@@ -290,43 +297,47 @@ width: 100%;
   cursor: pointer;
 
 }
-.swap-icon img{
+
+.swap-icon img {
   max-width: 32px;
 }
 
-.pool-rows-container{
+.pool-rows-container {
   width: 800px;
-    max-width: 100%;
+  max-width: 100%;
 }
 
-#from-balance{
+#from-balance {
   cursor: pointer;
 }
-#to-balance{
+
+#to-balance {
   cursor: pointer;
 }
 
 .pool-rows {
   display: flex;
   flex-direction: column;
-  
+
   /* Add spacing between pool rows */
   margin-top: 30px;
 }
 
-.pool-row:first-child{
+.pool-row:first-child {
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 }
-.pool-row:last-child{
+
+.pool-row:last-child {
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
   border-bottom: 1px solid rgba(34, 34, 34, 0.1);
 }
 
-.pool-rows-headers{
+.pool-rows-headers {
   display: grid;
-  grid-template-columns: repeat(5, 1fr); /* Divide into two columns */
+  grid-template-columns: repeat(5, 1fr);
+  /* Divide into two columns */
   gap: 30px;
   padding: 10px 20px 10px 20px;
   border: 1px solid rgba(34, 34, 34, 0.1);
@@ -338,34 +349,40 @@ width: 100%;
   border-top-right-radius: 10px;
   border-bottom: 0px;
 }
-.icon-right-arrow img{
+
+.icon-right-arrow img {
   max-width: 18px;
   cursor: pointer;
 }
-.icon-right-arrow{
+
+.icon-right-arrow {
   display: flex;
   justify-content: flex-end;
   align-items: center;
   cursor: pointer;
 }
-.arrow-rotate{
+
+.arrow-rotate {
   transform: rotate(90deg);
 }
+
 .pool-row {
   display: grid;
-  grid-template-columns: repeat(5, 1fr); /* Divide into two columns */
+  grid-template-columns: repeat(5, 1fr);
+  /* Divide into two columns */
   gap: 30px;
   padding: 20px 20px 20px 20px;
   border-right: 1px solid rgba(34, 34, 34, 0.1);
   border-left: 1px solid rgba(34, 34, 34, 0.1);
   border-top: 1px solid rgba(34, 34, 34, 0.1);
-  
+
   transition: transform 0.3s ease;
   cursor: pointer;
   align-items: center;
   max-width: 100%;
 }
-.pool-rows-headers>span{
+
+.pool-rows-headers>span {
   font-weight: bold;
   font-size: 16px;
 }
@@ -376,26 +393,28 @@ width: 100%;
 
 .pool-details {
   /* Styles for the details column */
-  grid-column: span 5; /* Make it span both columns */
+  grid-column: span 5;
+  /* Make it span both columns */
   display: none;
   padding: 20px;
   border-top: 1px solid rgba(34, 34, 34, 0.1);
 }
+
 .show-details .pool-details {
   display: block;
 }
 
-.input-image{
+.input-image {
   max-width: 32px;
   margin-left: 16px;
   cursor: pointer;
 }
 
-.input-group-with-image-right{
+.input-group-with-image-right {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  
+
 }
 
 #webgl-container {
@@ -420,7 +439,7 @@ width: 100%;
   /* Add a smooth transition for border changes */
   box-sizing: border-box;
   /* Include padding and border in the width calculation */
-  
+
 }
 
 .card input:hover,
@@ -471,7 +490,7 @@ width: 100%;
 }
 
 header>div {
-  
+
 
   position: relative;
 }
@@ -545,7 +564,7 @@ header>div {
   .content h1 {
     margin-top: 0;
   }
-  
+
 
   .active-header {
     height: 100vh;
@@ -616,11 +635,11 @@ header>div {
   }
 
   .cards {
-    
+
     /* Stack cards vertically on mobile */
     align-items: center;
     /* Center-align cards on mobile */
-    
+
   }
 
   .card {
@@ -631,15 +650,16 @@ header>div {
     padding: 15px;
     /* Reduce padding for more compact mobile layout */
   }
-  
-  .pool-rows-container{
+
+  .pool-rows-container {
     display: grid;
   }
-  .pool-rows{
+
+  .pool-rows {
     overflow: auto;
     display: grid;
   }
-  
+
   .pool-details {
     width: 100%;
     /* Ensure pool-details takes full width on mobile */
