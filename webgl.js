@@ -41,7 +41,7 @@ meshGroup.add(resultMesh);
 
 // camera position should be in front of the square
 camera.position.z = 2; // Adjust the camera position
-camera.position.x = -0.05;
+camera.position.x = -0.01;
 
 // Add a ambient light
 const ambientLight = new THREE.AmbientLight(0x404040);
