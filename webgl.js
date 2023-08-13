@@ -43,14 +43,7 @@ meshGroup.add(resultMesh);
 camera.position.z = 2; // Adjust the camera position
 camera.position.x = -0.01;
 
-// Add a ambient light
-const ambientLight = new THREE.AmbientLight(0x404040);
-scene.add(ambientLight);
 
-// Add a light
-const light = new THREE.PointLight(0xFFFFFF, 1, 1000);
-light.position.set(0, 0, 2);
-scene.add(light);
 
 const animate = () => {
     requestAnimationFrame(animate);
