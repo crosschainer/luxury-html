@@ -186,7 +186,11 @@ function switchSectionBasedOnHash() {
 window.addEventListener('hashchange', switchSectionBasedOnHash);
 
 // Initial section switch based on current URL hash
-switchSectionBasedOnHash();
+if (window.location.hash) {
+  switchSectionBasedOnHash();
+} else {
+  window.location.hash = "#home";
+}
 
 
 poolRows.forEach((row) => {
