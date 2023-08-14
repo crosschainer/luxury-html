@@ -14,7 +14,7 @@
     <!-- Favicon -->
     <link rel="shortcut icon" href="logo_white.svg" type="image/svg">
     <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
-
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 
 
 </head>
@@ -36,7 +36,7 @@
             <a class="nav-link section-link" href="#pools" id="nav-3">Pools</a>
 
             <div class="border-btn">
-                <a href="#" class="connect-wallet">Connect Wallet</a>
+                <a href="#" class="connect-wallet" id="connect-wallet">Connect Wallet</a>
             </div>
         </nav>
 
@@ -110,12 +110,12 @@
                         </div>
                         <div class="input-group-with-image-right">
                             <input type="number" placeholder="0.00" id="input-amount" />
-                            <img src="logo.svg" alt="Luxuro Logo" class="input-image">
+                            <img src="logo.svg" alt="Luxuro Logo" class="input-image" id="input-image">
                         </div>
                     </div>
 
                     <div class="swap-icon">
-                        <img src="swap-vertical.svg" alt="Swap Icon">
+                        <img src="swap-vertical.svg" alt="Swap Icon" id="switch-button">
                     </div>
 
                     <div>
@@ -125,7 +125,7 @@
                         </div>
                         <div class="input-group-with-image-right">
                             <input type="number" placeholder="0.00" id="output-amount" />
-                            <img src="logo.svg" alt="Luxuro Logo" class="input-image">
+                            <img src="logo.svg" alt="Luxuro Logo" class="input-image" id="output-image">
                         </div>
                     </div>
                 </div>
@@ -147,12 +147,12 @@
                     <div class="data">
                         <span>Slippage tolerance:</span>
                         <span class="settings-span">0.1% <img src="cogwheel.svg" alt="Slippage settings"
-                                class="slippage-cog"></span>
+                                class="slippage-cog" id="slippage-button"></span>
                     </div>
                 </div>
             </div>
             <div class="btns-swap">
-                <a href="#" class="cta-button swap-button">Swap</a>
+                <a href="#" id="swap-button" class="cta-button swap-button">Swap</a>
             </div></div>
         </section>
         <section class="content" id="pools">
@@ -210,9 +210,9 @@
                                 <span>0.0000 TAU / 0.0000 LUSD</span>
                             </div>
                             <div class="data btns-pool">
-                                <a href="#" class="cta-button m-0">Add Liquidity</a>
-                                <a href="#" class="cta-button m-0">Remove Liquidity</a>
-                                <a href="#" class="cta-button me-0">Claim Rewards</a>
+                                <a href="#" class="cta-button m-0 add-liquidity">Add Liquidity</a>
+                                <a href="#" class="cta-button m-0 remove-liquidity">Remove Liquidity</a>
+                                <a href="#" class="cta-button me-0 claim-rewards">Claim Rewards</a>
                             </div>
                         </td>
                     </tr>
@@ -257,9 +257,9 @@
                                 <span>0.0000 TAU / 0.0000 ETH</span>
                             </div>
                             <div class="data btns-pool">
-                                <a href="#" class="cta-button m-0">Add Liquidity</a>
-                                <a href="#" class="cta-button m-0">Remove Liquidity</a>
-                                <a href="#" class="cta-button me-0">Claim Rewards</a>
+                                <a href="#" class="cta-button m-0 add-liquidity">Add Liquidity</a>
+                                <a href="#" class="cta-button m-0 remove-liquidity">Remove Liquidity</a>
+                                <a href="#" class="cta-button me-0 claim-rewards">Claim Rewards</a>
                             </div>
                         </td>
                     </tr>
@@ -272,7 +272,9 @@
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/gsap.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <script src="fancy.js"></script>
+    <script src="swap.js"></script>
 </body>
 
 </html>
