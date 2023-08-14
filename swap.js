@@ -13,6 +13,7 @@ const add_liquidity_buttons = document.querySelectorAll(".add-liquidity");
 const remove_liquidity_buttons = document.querySelectorAll(".remove-liquidity");
 const claim_rewards_buttons = document.querySelectorAll(".claim-rewards");
 
+MicroModal.init();
 
 swap_button.addEventListener("click", (event) => {
     event.preventDefault();
@@ -33,36 +34,12 @@ swap_button.addEventListener("click", (event) => {
 
 input_button.addEventListener("click", (event) => {
     event.preventDefault();
-    Toastify({
-        text: "Not implemented!",
-        duration: 3000,
-        avatar: "x-icon.svg",
-        gravity: "bottom", // `top` or `bottom`
-        position: "right", // `left`, `center` or `right`
-        stopOnFocus: false, // Prevents dismissing of toast on hover
-        style: {
-          background: "#FF2400",
-          color: "#fff",
-        },
-        onClick: function(){} // Callback after click
-      }).showToast();
+    MicroModal.show('token-select-modal'); 
 });
 
 output_button.addEventListener("click", (event) => {
     event.preventDefault();
-    Toastify({
-        text: "Not implemented!",
-        duration: 3000,
-        avatar: "x-icon.svg",
-        gravity: "bottom", // `top` or `bottom`
-        position: "right", // `left`, `center` or `right`
-        stopOnFocus: false, // Prevents dismissing of toast on hover
-        style: {
-          background: "#FF2400",
-          color: "#fff",
-        },
-        onClick: function(){} // Callback after click
-      }).showToast();
+    MicroModal.show('token-select-modal'); 
 });
 
 switch_button.addEventListener("click", (event) => {
