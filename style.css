@@ -192,8 +192,13 @@ p:not(:first-of-type) {
 
 .content h1 {
   font-size: 36px;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   text-align: center;
+}
+.table-container {
+  border: 1px solid rgba(34, 34, 34, 0.1);
+    border-radius: 10px;
+    overflow-x:auto;
 }
 
 .content p {
@@ -231,7 +236,7 @@ li {
   justify-content: center;
   gap: 20px;
   /* Add some space between cards */
-  margin-top: 30px;
+  margin-top: 20px;
   width: 100%;
 
   margin-left: auto;
@@ -302,10 +307,64 @@ li {
   max-width: 32px;
 }
 
-.pool-rows-container {
-  width: 800px;
-  max-width: 100%;
-}
+ .pool-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .pool-table th,
+  .pool-table td {
+    padding: 10px;
+    
+  }
+  tbody{
+    border-top: 1px solid rgba(34, 34, 34, 0.1);
+  }
+  .pool-table th{
+    border-right: 1px solid rgba(34, 34, 34, 0.1);
+  }
+  .pool-table th:last-child{
+    border-right: none;
+  }
+  .pool-table td:last-child{
+    border-right: none;
+    
+  }
+  .pool-table tr:last-child{
+    border-bottom: none;
+  }
+  
+
+  .pool-table td {
+    border-right: 1px solid rgba(34, 34, 34, 0.1);
+    border-top: 1px solid rgba(34, 34, 34, 0.1);
+  }
+
+  .pool-table tr:last-child td {
+    border-top: 0;
+  }
+
+
+  .pool-table th {
+    font-weight: bold;
+    font-size: 18px;
+  }
+
+  .pool-row {
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .pool-details {
+    display: none;
+    padding: 20px;
+    border-top: 1px solid rgba(34, 34, 34, 0.1);
+    grid-column: span 5;
+  }
+
+  .show-details  {
+    display: table-row;
+  }
 
 #from-balance {
   cursor: pointer;
@@ -315,40 +374,7 @@ li {
   cursor: pointer;
 }
 
-.pool-rows {
-  display: flex;
-  flex-direction: column;
 
-  /* Add spacing between pool rows */
-  margin-top: 30px;
-}
-
-.pool-row:first-child {
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-}
-
-.pool-row:last-child {
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
-  border-bottom: 1px solid rgba(34, 34, 34, 0.1);
-}
-
-.pool-rows-headers {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  /* Divide into two columns */
-  gap: 30px;
-  padding: 10px 20px 10px 20px;
-  border: 1px solid rgba(34, 34, 34, 0.1);
-  white-space: nowrap;
-  transition: transform 0.3s ease;
-
-  align-items: center;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  border-bottom: 0px;
-}
 
 .icon-right-arrow img {
   max-width: 18px;
@@ -366,43 +392,7 @@ li {
   transform: rotate(90deg);
 }
 
-.pool-row {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  /* Divide into two columns */
-  gap: 30px;
-  padding: 20px 20px 20px 20px;
-  border-right: 1px solid rgba(34, 34, 34, 0.1);
-  border-left: 1px solid rgba(34, 34, 34, 0.1);
-  border-top: 1px solid rgba(34, 34, 34, 0.1);
 
-  transition: transform 0.3s ease;
-  cursor: pointer;
-  align-items: center;
-  max-width: 100%;
-}
-
-.pool-rows-headers>span {
-  font-weight: bold;
-  font-size: 16px;
-}
-
-.pool-info {
-  /* Styles for the left column */
-}
-
-.pool-details {
-  /* Styles for the details column */
-  grid-column: span 5;
-  /* Make it span both columns */
-  display: none;
-  padding: 20px;
-  border-top: 1px solid rgba(34, 34, 34, 0.1);
-}
-
-.show-details .pool-details {
-  display: block;
-}
 
 .input-image {
   max-width: 32px;
@@ -651,17 +641,5 @@ header>div {
     /* Reduce padding for more compact mobile layout */
   }
 
-  .pool-rows-container {
-    display: grid;
-  }
 
-  .pool-rows {
-    overflow: auto;
-    display: grid;
-  }
-
-  .pool-details {
-    width: 100%;
-    /* Ensure pool-details takes full width on mobile */
-  }
 }

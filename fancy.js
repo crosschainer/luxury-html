@@ -189,10 +189,13 @@ window.addEventListener('hashchange', switchSectionBasedOnHash);
 switchSectionBasedOnHash();
 
 
-poolRows.forEach(row => {
-  row.addEventListener('click', () => {
-      row.classList.toggle('show-details');
-      // Rotate svg arrow 45deg
-      row.querySelector('.arrow').classList.toggle('arrow-rotate');
+poolRows.forEach((row) => {
+  const detailsRow = row.nextElementSibling;
+  const arrowIcon = row.querySelector(".arrow");
+
+  row.addEventListener("click", () => {
+    row.classList.toggle("show-details");
+    detailsRow.classList.toggle("show-details");
+    arrowIcon.classList.toggle("arrow-rotate");
   });
 });
