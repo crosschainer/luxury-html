@@ -396,7 +396,23 @@ li {
   transform: rotate(90deg);
 }
 
+.mt-30px {
+  margin-top: 30px;
+}
 
+.bold {
+  font-weight: bold;
+}
+.btns-pool{
+  
+  padding-top: 10px;
+}
+.m-0{
+  margin: 0;
+}
+.me-0{
+  margin-right: 0;
+}
 
 .input-image {
   max-width: 32px;
