@@ -17,6 +17,8 @@ const claim_rewards_buttons = document.querySelectorAll(".claim-rewards");
 const tokenSelect = document.querySelector(".custom-select");
 const searchInput = tokenSelect.querySelector(".search-input");
 const tokenOptions = tokenSelect.querySelectorAll(".token-option");
+const tokenList = tokenSelect.querySelector(".token-list");
+const selectedToken = tokenSelect.querySelector(".selected-item");
 
 MicroModal.init();
 
@@ -157,5 +159,20 @@ searchInput.addEventListener('input', () => {
   tokenOptions.forEach(option => {
     const tokenName = option.dataset.token.toLowerCase();
     option.style.display = tokenName.includes(searchTerm) ? 'block' : 'none';
+  });
+});
+
+tokenOptions.forEach(option => {
+  option.addEventListener("click", () => {
+    event.stopPropagation();
+    const tokenName = option.dataset.token;
+    const tokenIcon = option.querySelector("img").src;
+
+    selectedToken.innerHTML = `
+      <img src="${tokenIcon}" alt="${tokenName}" class="token-image" />
+      <span>${tokenName}</span>
+    `;
+
+    tokenSelect.classList.remove("open");
   });
 });
