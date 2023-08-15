@@ -1,303 +1,459 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Luxuro | Lamden Decentralized Exchange</title>
-    <meta name="description" content="Luxuro is a cutting-edge decentralized exchange, revolutionizing the
+    <meta
+      name="description"
+      content="Luxuro is a cutting-edge decentralized exchange, revolutionizing the
                 way you trade stablecoins and similar assets on the Lamden blockchain with unparalleled efficiency and
-                minimal slippage.">
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+                minimal slippage."
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <!-- Favicon -->
-    <link rel="shortcut icon" href="logo_white.svg" type="image/svg">
-    <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <link rel="shortcut icon" href="logo_white.svg" type="image/svg" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Questrial&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+    />
+  </head>
 
-
-</head>
-
-<body>
+  <body>
     <header>
-        <div class="logo-container">
-            <a class="center-nav nav-link section-link" id="nav-0" href="#home">Luxuro</a>
+      <div class="logo-container">
+        <a class="center-nav nav-link section-link" id="nav-0" href="#home"
+          >Luxuro</a
+        >
+      </div>
+      <div class="burger-menu">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+      <nav class="flex-grow-1">
+        <a class="nav-link section-link" href="#what-is-luxuro" id="nav-1"
+          >What is Luxuro?</a
+        >
+        <a class="nav-link section-link" href="#swap" id="nav-2">Swap</a>
+        <a class="nav-link section-link" href="#pools" id="nav-3">Pools</a>
 
+        <div class="border-btn">
+          <a href="#" class="connect-wallet" id="connect-wallet"
+            >Connect Wallet</a
+          >
         </div>
-        <div class="burger-menu">
-            <div class="bar"></div>
-            <div class="bar"></div>
-            <div class="bar"></div>
-        </div>
-        <nav class="flex-grow-1">
-            <a class="nav-link section-link" href="#what-is-luxuro" id="nav-1">What is Luxuro?</a>
-            <a class="nav-link section-link" href="#swap" id="nav-2">Swap</a>
-            <a class="nav-link section-link" href="#pools" id="nav-3">Pools</a>
-
-            <div class="border-btn">
-                <a href="#" class="connect-wallet" id="connect-wallet">Connect Wallet</a>
-            </div>
-        </nav>
-
+      </nav>
     </header>
 
-    <main style="display:flex">
-        <section class="content" id="home">
-            <div id="webgl-container">
-                <img src="logo.svg" alt="Luxuro Logo" id="logo">
-            </div>
-            <h1>Welcome to Luxuro</h1>
-            <p style="font-weight:normal">Luxuro is a cutting-edge decentralized exchange, revolutionizing the
-                way you trade stablecoins and similar assets on the Lamden blockchain with unparalleled efficiency and
-                minimal slippage.</p>
-            <div class="text-center">
-                <a href="#swap" class="cta-button nav-link section-link">Trade Now</a>
-            </div>
+    <main style="display: flex">
+      <section class="content" id="home">
+        <div id="webgl-container">
+          <img src="logo.svg" alt="Luxuro Logo" id="logo" />
+        </div>
+        <h1>Welcome to Luxuro</h1>
+        <p style="font-weight: normal">
+          Luxuro is a cutting-edge decentralized exchange, revolutionizing the
+          way you trade stablecoins and similar assets on the Lamden blockchain
+          with unparalleled efficiency and minimal slippage.
+        </p>
+        <div class="text-center">
+          <a href="#swap" class="cta-button nav-link section-link">Trade Now</a>
+        </div>
+      </section>
+      <section class="content" id="what-is-luxuro">
+        <h1>What is Luxuro?</h1>
+        <p>
+          Luxuro transcends traditional decentralized finance, redefining the
+          way stablecoins and similar assets are traded on the Lamden
+          blockchain. Immerse yourself in a sophisticated ecosystem that boasts
+          an array of features designed to optimize your trading journey.
+        </p>
+        <h2>Efficiency Redefined:</h2>
 
-        </section>
-        <section class="content" id="what-is-luxuro">
-            <h1>What is Luxuro?</h1>
-            <p>Luxuro transcends traditional decentralized finance, redefining the way stablecoins and similar
-                assets are traded on the Lamden blockchain. Immerse yourself in a sophisticated ecosystem that boasts an
-                array of features designed to optimize your trading journey.</p>
-            <h2>Efficiency Redefined:</h2>
+        <p>
+          Luxuro harnesses state-of-the-art algorithms and meticulously crafted
+          liquidity pools to ensure trades occur at lightning speed. Bid
+          farewell to sluggish transaction times and seize every opportunity
+          with rapid executions that keep you ahead of the curve.
+        </p>
+        <h2>Minimize Slippage, Maximize Gains:</h2>
 
-            <p>Luxuro harnesses state-of-the-art algorithms and meticulously crafted liquidity pools to ensure trades
-                occur at lightning speed. Bid farewell to sluggish transaction times and seize every opportunity with
-                rapid executions that keep you ahead of the curve.</p>
-            <h2>Minimize Slippage, Maximize Gains:</h2>
+        <p>
+          Say goodbye to frustrating slippage that can eat into your gains.
+          Luxuro's innovative trading mechanisms offer minimal price slippage,
+          empowering you to extract the utmost value from every trade and make
+          your assets work harder for you.
+        </p>
+        <h2>A Haven of Stability:</h2>
 
-            <p>Say goodbye to frustrating slippage that can eat into your gains. Luxuro's innovative trading mechanisms
-                offer minimal price slippage, empowering you to extract the utmost value from every trade and make your
-                assets work harder for you.</p>
-            <h2>A Haven of Stability:</h2>
+        <p>
+          Specializing in stablecoin trading, Luxuro provides a secure
+          environment for managing assets pegged to real-world currencies.
+          Amidst the volatile crypto landscape, Luxuro offers stability, making
+          it an ideal platform to manage your wealth and strategic investments.
+        </p>
+        <h2>Empowering Decentralization:</h2>
 
-            <p>Specializing in stablecoin trading, Luxuro provides a secure environment for managing assets pegged to
-                real-world currencies. Amidst the volatile crypto landscape, Luxuro offers stability, making it an ideal
-                platform to manage your wealth and strategic investments.</p>
-            <h2>Empowering Decentralization:</h2>
+        <p>
+          Luxuro's decentralized architecture liberates you from the constraints
+          of intermediaries. Take control of your assets and trades directly,
+          while benefiting from the inherent security and transparency of
+          blockchain technology.
+        </p>
+        <h2>User-Centric Interface:</h2>
 
-            <p>Luxuro's decentralized architecture liberates you from the constraints of intermediaries. Take control of
-                your assets and trades directly, while benefiting from the inherent security and transparency of
-                blockchain technology.</p>
-            <h2>User-Centric Interface:</h2>
+        <p>
+          Navigating Luxuro's intuitive interface is a seamless experience
+          whether you're a seasoned trader or a newcomer to DeFi. Our
+          user-centric design ensures accessibility and ease, enabling you to
+          focus on what truly matters—your trading strategies.
+        </p>
+        <h2>Why Luxuro?</h2>
 
-            <p>Navigating Luxuro's intuitive interface is a seamless experience whether you're a seasoned trader or a
-                newcomer to DeFi. Our user-centric design ensures accessibility and ease, enabling you to focus on what
-                truly matters—your trading strategies.</p>
-            <h2>Why Luxuro?</h2>
+        <p>
+          Luxuro isn't just another platform; it's a gateway to a more efficient
+          and secure trading realm. As you venture into the dynamic world of
+          decentralized finance, Luxuro's optimized features, unmatched
+          efficiency, and commitment to user satisfaction position it as a
+          beacon of opportunity.
+        </p>
+        <p>
+          Explore Luxuro now and experience the future of trading—one where
+          efficiency, stability, and control merge seamlessly to enhance your
+          financial journey.
+        </p>
+      </section>
 
-            <p>Luxuro isn't just another platform; it's a gateway to a more efficient and secure trading realm. As you
-                venture into the dynamic world of decentralized finance, Luxuro's optimized features, unmatched
-                efficiency, and commitment to user satisfaction position it as a beacon of opportunity.</p>
-            <p>Explore Luxuro now and experience the future of trading—one where efficiency, stability, and control
-                merge seamlessly to enhance your financial journey.</p>
-        </section>
-
-        <section class="content" id="swap">
-            <h1>Swap</h1>
-            <div class="swap-container">
-                <div class="cards">
-                    <div class="card">
-                        <div class="card-header">
-                            <h2>Exchange Currencies</h2>
-                        </div>
-                        <div>
-                            <div class="input-group-form">
-                                <span>From Luxuro</span>
-                                <span>Balance: <span id="from-balance">0.00000000</span></span>
-                            </div>
-                            <div class="input-group-with-image-right">
-                                <input type="number" placeholder="0.00" id="input-amount" />
-                                <img src="logo.svg" alt="Luxuro Logo" class="input-image" id="input-image">
-                            </div>
-                        </div>
-
-                        <div class="swap-icon">
-                            <img src="swap-vertical.svg" alt="Swap Icon" id="switch-button">
-                        </div>
-
-                        <div>
-                            <div class="input-group-form">
-                                <span>To Luxuro</span>
-                                <span>Balance: <span id="to-balance">0.00000000</span></span>
-                            </div>
-                            <div class="input-group-with-image-right">
-                                <input type="number" placeholder="0.00" id="output-amount" />
-                                <img src="logo.svg" alt="Luxuro Logo" class="input-image" id="output-image">
-                            </div>
-                        </div>
-                    </div>
+      <section class="content" id="swap">
+        <h1>Swap</h1>
+        <div class="swap-container">
+          <div class="cards">
+            <div class="card">
+              <div class="card-header">
+                <h2>Exchange Currencies</h2>
+              </div>
+              <div>
+                <div class="input-group-form">
+                  <span>From Luxuro</span>
+                  <span
+                    >Balance: <span id="from-balance">0.00000000</span></span
+                  >
                 </div>
-                <div class="cards">
-                    <div class="card">
-                        <div class="data">
-                            <span>Exchange rate (incl. fees):</span>
-                            <span>0.00000000</span>
-                        </div>
-                        <div class="data">
-                            <span>Price impact:</span>
-                            <span>0%</span>
-                        </div>
-                        <div class="data">
-                            <span>Trade routed through:</span>
-                            <span>TAULUSD</span>
-                        </div>
-                        <div class="data">
-                            <span>Slippage tolerance:</span>
-                            <span class="settings-span">0.1% <img src="cogwheel.svg" alt="Slippage settings"
-                                    class="slippage-cog" id="slippage-button"></span>
-                        </div>
-                    </div>
+                <div class="input-group-with-image-right">
+                  <input type="number" placeholder="0.00" id="input-amount" />
+                  <img
+                    src="logo.svg"
+                    alt="Luxuro Logo"
+                    class="input-image"
+                    id="input-image"
+                  />
                 </div>
-                <div class="btns-swap">
-                    <a href="#" id="swap-button" class="cta-button swap-button">Swap</a>
-                </div>
-            </div>
-        </section>
-        <section class="content" id="pools">
-            <h1>Pools</h1>
-            <div class="table-container">
-                <table class="pool-table">
-                    <thead>
-                        <tr>
-                            <th>Pool</th>
-                            <th>Max APY</th>
-                            <th>Volume</th>
-                            <th>TVL</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="pool-row">
-                            <td class="pool-info">TAULUSD</td>
-                            <td class="pool-info">0.20%</td>
-                            <td class="pool-info">$24.98m</td>
-                            <td class="pool-info">$321.55m</td>
-                            <td class="pool-info">
-                                <div class="icon-right-arrow">
-                                    <img src="right-arrow.svg" class="arrow" alt="Right Arrow">
-                                </div>
-                            </td>
-                        </tr>
-                        <tr class="pool-details">
-                            <td colspan="5">
-                                <div class="data">
-                                    <span>Pool ID:</span>
-                                    <span>TAULUSD</span>
-                                </div>
-                                <div class="data">
-                                    <span>Daily USD Volume:</span>
-                                    <span>$24.98m</span>
-                                </div>
-                                <div class="data">
-                                    <span>Liquidity utilization:</span>
-                                    <span>27,820.02%</span>
-                                </div>
-                                <div class="data">
-                                    <span>Fees:</span>
-                                    <span>0.60%</span>
-                                </div>
-                                <div class="data mt-30px">
-                                    <span class="bold">Your Position</span>
-                                </div>
-                                <div class="data">
-                                    <span>Your Liquidity Points:</span>
-                                    <span>0 LP (0.0000 TAU/0.0000 USD)</span>
-                                </div>
-                                <div class="data">
-                                    <span>Your Rewards:</span>
-                                    <span>0.0000 TAU / 0.0000 LUSD</span>
-                                </div>
-                                <div class="data btns-pool">
-                                    <a href="#" class="cta-button m-0 add-liquidity">Add Liquidity</a>
-                                    <a href="#" class="cta-button m-0 remove-liquidity">Remove Liquidity</a>
-                                    <a href="#" class="cta-button me-0 claim-rewards">Claim Rewards</a>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr class="pool-row">
-                            <td class="pool-info">ETHLUSD</td>
-                            <td class="pool-info">0.20%</td>
-                            <td class="pool-info">$19.98m</td>
-                            <td class="pool-info">$652.11m</td>
-                            <td class="pool-info">
-                                <div class="icon-right-arrow">
-                                    <img src="right-arrow.svg" class="arrow" alt="Right Arrow">
-                                </div>
-                            </td>
-                        </tr>
-                        <tr class="pool-details">
-                            <td colspan="5">
-                                <div class="data">
-                                    <span>Pool ID:</span>
-                                    <span>ETHLUSD</span>
-                                </div>
-                                <div class="data">
-                                    <span>Daily USD Volume:</span>
-                                    <span>$19.98m</span>
-                                </div>
-                                <div class="data">
-                                    <span>Liquidity utilization:</span>
-                                    <span>12,420.02%</span>
-                                </div>
-                                <div class="data">
-                                    <span>Fees</span>
-                                    <span>0.60%</span>
-                                </div>
-                                <div class="data mt-30px">
-                                    <span class="bold">Your Position</span>
-                                </div>
-                                <div class="data">
-                                    <span>Your Liquidity Points:</span>
-                                    <span>0 LP (0.0000 TAU/0.0000 ETH)</span>
-                                </div>
-                                <div class="data">
-                                    <span>Your Rewards:</span>
-                                    <span>0.0000 TAU / 0.0000 ETH</span>
-                                </div>
-                                <div class="data btns-pool">
-                                    <a href="#" class="cta-button m-0 add-liquidity">Add Liquidity</a>
-                                    <a href="#" class="cta-button m-0 remove-liquidity">Remove Liquidity</a>
-                                    <a href="#" class="cta-button me-0 claim-rewards">Claim Rewards</a>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
+              </div>
 
+              <div class="swap-icon">
+                <img
+                  src="swap-vertical.svg"
+                  alt="Swap Icon"
+                  id="switch-button"
+                />
+              </div>
+
+              <div>
+                <div class="input-group-form">
+                  <span>To Luxuro</span>
+                  <span>Balance: <span id="to-balance">0.00000000</span></span>
+                </div>
+                <div class="input-group-with-image-right">
+                  <input type="number" placeholder="0.00" id="output-amount" />
+                  <img
+                    src="logo.svg"
+                    alt="Luxuro Logo"
+                    class="input-image"
+                    id="output-image"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="cards">
+            <div class="card">
+              <div class="data">
+                <span>Exchange rate (incl. fees):</span>
+                <span>0.00000000</span>
+              </div>
+              <div class="data">
+                <span>Price impact:</span>
+                <span>0%</span>
+              </div>
+              <div class="data">
+                <span>Trade routed through:</span>
+                <span>TAULUSD</span>
+              </div>
+              <div class="data">
+                <span>Slippage tolerance:</span>
+                <span class="settings-span"
+                  >0.1%
+                  <img
+                    src="cogwheel.svg"
+                    alt="Slippage settings"
+                    class="slippage-cog"
+                    id="slippage-button"
+                /></span>
+              </div>
+            </div>
+          </div>
+          <div class="btns-swap">
+            <a href="#" id="swap-button" class="cta-button swap-button">Swap</a>
+          </div>
+        </div>
+      </section>
+      <section class="content" id="pools">
+        <h1>Pools</h1>
+        <div class="table-container">
+          <table class="pool-table">
+            <thead>
+              <tr>
+                <th>Pool</th>
+                <th>Max APY</th>
+                <th>Volume</th>
+                <th>TVL</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="pool-row">
+                <td class="pool-info">TAULUSD</td>
+                <td class="pool-info">0.20%</td>
+                <td class="pool-info">$24.98m</td>
+                <td class="pool-info">$321.55m</td>
+                <td class="pool-info">
+                  <div class="icon-right-arrow">
+                    <img
+                      src="right-arrow.svg"
+                      class="arrow"
+                      alt="Right Arrow"
+                    />
+                  </div>
+                </td>
+              </tr>
+              <tr class="pool-details">
+                <td colspan="5">
+                  <div class="data">
+                    <span>Pool ID:</span>
+                    <span>TAULUSD</span>
+                  </div>
+                  <div class="data">
+                    <span>Daily USD Volume:</span>
+                    <span>$24.98m</span>
+                  </div>
+                  <div class="data">
+                    <span>Liquidity utilization:</span>
+                    <span>27,820.02%</span>
+                  </div>
+                  <div class="data">
+                    <span>Fees:</span>
+                    <span>0.60%</span>
+                  </div>
+                  <div class="data mt-30px">
+                    <span class="bold">Your Position</span>
+                  </div>
+                  <div class="data">
+                    <span>Your Liquidity Points:</span>
+                    <span>0 LP (0.0000 TAU/0.0000 USD)</span>
+                  </div>
+                  <div class="data">
+                    <span>Your Rewards:</span>
+                    <span>0.0000 TAU / 0.0000 LUSD</span>
+                  </div>
+                  <div class="data btns-pool">
+                    <a href="#" class="cta-button m-0 add-liquidity"
+                      >Add Liquidity</a
+                    >
+                    <a href="#" class="cta-button m-0 remove-liquidity"
+                      >Remove Liquidity</a
+                    >
+                    <a href="#" class="cta-button me-0 claim-rewards"
+                      >Claim Rewards</a
+                    >
+                  </div>
+                </td>
+              </tr>
+              <tr class="pool-row">
+                <td class="pool-info">ETHLUSD</td>
+                <td class="pool-info">0.20%</td>
+                <td class="pool-info">$19.98m</td>
+                <td class="pool-info">$652.11m</td>
+                <td class="pool-info">
+                  <div class="icon-right-arrow">
+                    <img
+                      src="right-arrow.svg"
+                      class="arrow"
+                      alt="Right Arrow"
+                    />
+                  </div>
+                </td>
+              </tr>
+              <tr class="pool-details">
+                <td colspan="5">
+                  <div class="data">
+                    <span>Pool ID:</span>
+                    <span>ETHLUSD</span>
+                  </div>
+                  <div class="data">
+                    <span>Daily USD Volume:</span>
+                    <span>$19.98m</span>
+                  </div>
+                  <div class="data">
+                    <span>Liquidity utilization:</span>
+                    <span>12,420.02%</span>
+                  </div>
+                  <div class="data">
+                    <span>Fees</span>
+                    <span>0.60%</span>
+                  </div>
+                  <div class="data mt-30px">
+                    <span class="bold">Your Position</span>
+                  </div>
+                  <div class="data">
+                    <span>Your Liquidity Points:</span>
+                    <span>0 LP (0.0000 TAU/0.0000 ETH)</span>
+                  </div>
+                  <div class="data">
+                    <span>Your Rewards:</span>
+                    <span>0.0000 TAU / 0.0000 ETH</span>
+                  </div>
+                  <div class="data btns-pool">
+                    <a href="#" class="cta-button m-0 add-liquidity"
+                      >Add Liquidity</a
+                    >
+                    <a href="#" class="cta-button m-0 remove-liquidity"
+                      >Remove Liquidity</a
+                    >
+                    <a href="#" class="cta-button me-0 claim-rewards"
+                      >Claim Rewards</a
+                    >
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
     </main>
 
-    <div class="modal micromodal-slide" id="token-select-modal" aria-hidden="true">
-        <div class="modal__overlay" tabindex="-1" data-micromodal-close>
-          <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="token-select-modal-title">
-            <div class="modal__header">
-              <h2 class="modal__title" id="token-select-modal-title">
-                Token Select
-              </h2>
-              <button class="modal__close" aria-label="Close modal" data-micromodal-close></button>
+    <div
+      class="modal micromodal-slide"
+      id="token-select-modal"
+      aria-hidden="true"
+    >
+      <div class="modal__overlay" tabindex="-1" data-micromodal-close>
+        <div
+          class="modal__container"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="token-select-modal-title"
+        >
+          <div class="modal__header">
+            <h2 class="modal__title" id="token-select-modal-title">
+              Token Select
+            </h2>
+            <button
+              class="modal__close"
+              aria-label="Close modal"
+              data-micromodal-close
+            ></button>
+          </div>
+          <div class="modal__content" id="token-select-modal-content">
+            <p>Select a verified token to be used in the trade.</p>
+            <div class="custom-select">
+            <div class="selected-item">
+                <img src="logo.svg" alt="Token Image" class="token-image">
+                <span class="token-name">Luxuro</span>
             </div>
-            <div class="modal__content" id="token-select-modal-content">
-              <p>
-                Try hitting the <code>tab</code> key and notice how the focus stays within the modal itself. Also, <code>esc</code> to close modal.
-              </p>
+            <div class="select-dropdown">
+                <input type="text" placeholder="Search tokens..." class="search-input">
+                <ul class="token-list">
+                <li class="token-option" data-token="Luxuro">
+                    <img src="logo.svg" alt="Token 1" class="token-image">
+                    <span class="token-name">Luxuro</span>
+                </li>
+                
+                <!-- Add more token options here -->
+                </ul>
             </div>
-            <div class="modal__footer">
-              <button class="modal__btn modal__btn-primary">Select</button>
-              <button class="modal__btn" data-micromodal-close aria-label="Close this dialog window">Close</button>
             </div>
+
+          </div>
+          <div class="modal__footer">
+            <button class="modal__btn modal__btn-primary">Select</button>
+            <button
+              class="modal__btn"
+              data-micromodal-close
+              aria-label="Close this dialog window"
+            >
+              Close
+            </button>
           </div>
         </div>
       </div>
+    </div>
+
+    <div
+      class="modal micromodal-slide"
+      id="slippage-settings-modal"
+      aria-hidden="true"
+    >
+      <div class="modal__overlay" tabindex="-1" data-micromodal-close>
+        <div
+          class="modal__container"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="slippage-settings-modal-title"
+        >
+          <div class="modal__header">
+            <h2 class="modal__title" id="slippage-settings-modal-title">
+              Slippage Settings
+            </h2>
+            <button
+              class="modal__close"
+              aria-label="Close modal"
+              data-micromodal-close
+            ></button>
+          </div>
+          <div class="modal__content" id="slippage-settings-modal-content">
+                <p>Setting a high slippage tolerance can help transactions succeed, but you may not get such a good price. Use with caution.</p>
+              <input type="number" placeholder="0.1" min="0.1" max="49" id="slippage-input" class="slippage-input"/>
+            
+          </div>
+          <div class="modal__footer">
+            <button class="modal__btn modal__btn-primary">Save</button>
+            <button
+              class="modal__btn"
+              data-micromodal-close
+              aria-label="Close this dialog window"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/gsap.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/toastify-js"
+    ></script>
     <script src="https://unpkg.com/micromodal/dist/micromodal.min.js"></script>
     <script src="fancy.js"></script>
     <script src="swap.js"></script>
-</body>
-
+  </body>
 </html>

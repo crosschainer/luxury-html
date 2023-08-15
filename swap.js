@@ -13,6 +13,11 @@ const add_liquidity_buttons = document.querySelectorAll(".add-liquidity");
 const remove_liquidity_buttons = document.querySelectorAll(".remove-liquidity");
 const claim_rewards_buttons = document.querySelectorAll(".claim-rewards");
 
+// Custom Token Selector
+const tokenSelect = document.querySelector(".custom-select");
+const searchInput = tokenSelect.querySelector(".search-input");
+const tokenOptions = tokenSelect.querySelectorAll(".token-option");
+
 MicroModal.init();
 
 swap_button.addEventListener("click", (event) => {
@@ -61,19 +66,7 @@ switch_button.addEventListener("click", (event) => {
 
 slippage_button.addEventListener("click", (event) => {
     event.preventDefault();
-    Toastify({
-        text: "Not implemented!",
-        duration: 3000,
-        avatar: "x-icon.svg",
-        gravity: "bottom", // `top` or `bottom`
-        position: "right", // `left`, `center` or `right`
-        stopOnFocus: false, // Prevents dismissing of toast on hover
-        style: {
-          background: "#FF2400",
-          color: "#fff",
-        },
-        onClick: function(){} // Callback after click
-      }).showToast();
+    MicroModal.show("slippage-settings-modal"); 
 });
 
 add_liquidity_buttons.forEach((button) => {
@@ -148,4 +141,21 @@ connect_button.addEventListener("click", (event) => {
         },
         onClick: function(){} // Callback after click
       }).showToast();
+});
+
+tokenSelect.addEventListener("click", () => {
+  tokenSelect.classList.toggle("open");
+});
+
+searchInput.addEventListener("click", (event) => {
+  event.stopPropagation();
+});
+
+searchInput.addEventListener('input', () => {
+  const searchTerm = searchInput.value.trim().toLowerCase();
+  
+  tokenOptions.forEach(option => {
+    const tokenName = option.dataset.token.toLowerCase();
+    option.style.display = tokenName.includes(searchTerm) ? 'block' : 'none';
+  });
 });

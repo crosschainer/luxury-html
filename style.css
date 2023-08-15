@@ -88,12 +88,14 @@ nav {
 }
 
 
+
+
 nav a,
 .center-nav {
   text-decoration: none;
   margin: 5px 10px;
   padding: 5px 10px;
-  border-radius: 5px;
+  border-radius: 10px;
   color: #222;
   /* Slightly softened black text */
   border: 1px solid rgba(34, 34, 34, 0.0);
@@ -212,7 +214,7 @@ p:not(:first-of-type) {
   background-color: #222;
   color: #fff;
   text-decoration: none;
-  border-radius: 5px;
+  border-radius: 10px;
   transition: background-color 0.3s ease;
   margin: 0 auto;
 }
@@ -454,12 +456,30 @@ li {
   padding-bottom: 1rem;
 }
 
+.slippage-input{
+  
+  width: 100%;
+  padding: 10px;
+  border: 1px solid rgba(34, 34, 34, 0.1);
+  border-radius: 10px;
+  font-size: 16px;
+  color: #222;
+  /* Slightly softened black text */
+  transition: border-color 0.3s ease;
+  /* Add a smooth transition for border changes */
+  box-sizing: border-box;
+  /* Include padding and border in the width calculation */
+width: 300px;
+    max-width: 100%;
+
+}
+
 /* Input Styles */
 .card input {
   width: 100%;
   padding: 10px;
   border: 1px solid rgba(34, 34, 34, 0.1);
-  border-radius: 5px;
+  border-radius: 10px;
   font-size: 16px;
   color: #222;
   /* Slightly softened black text */
@@ -598,9 +618,11 @@ header>div {
   padding: 30px;
   max-width: 500px;
   max-height: 100vh;
-  border-radius: 4px;
-  overflow-y: auto;
+  border-radius: 10px;
+
   box-sizing: border-box;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 .modal__header {
@@ -627,14 +649,15 @@ header>div {
 .modal__header .modal__close:before { content: "\2715"; font-size: 18px; }
 
 .modal__content {
-  margin-top: 2rem;
-  margin-bottom: 2rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
   color: #222;
   font-weight: 400;
 }
 .modal__content p {
   font-weight: 400;
   text-align:left;
+  font-size: 14px;
 }
 
 .modal__btn {
@@ -735,6 +758,86 @@ header>div {
   }
 
 }
+
+/* Custom select styles */
+.custom-select {
+  position: relative;
+  width: 400px;
+  max-width: 100%;
+}
+
+.selected-item {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.selected-item .token-image {
+  max-width: 24px;
+  margin-right: 10px;
+}
+
+.select-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: calc(100% - 2px);
+  max-height: 400px; /* Set a maximum height for the dropdown */
+  overflow-y: auto; /* Enable scrolling when content exceeds the max height */
+  border: 1px solid #ccc;
+  border-top: none;
+  border-radius: 0 0 5px 5px;
+  display: none;
+  overflow-x: hidden;
+}
+
+.search-input {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  outline: none;
+}
+
+.token-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  background-color: #fff;
+  overflow-x: hidden;
+  margin-top: -1px;
+}
+
+
+.token-option {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.token-option:hover {
+  background-color: #f5f5f5;
+}
+
+.token-option .token-image {
+  max-width: 24px;
+  margin-right: 10px;
+}
+
+/* Show dropdown when selected item is clicked */
+.custom-select.open .select-dropdown {
+  display: block;
+}
+
+.custom-select.open .selected-item {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
 
 /* Responsive Styles */
 @media (max-width: 768px) {
