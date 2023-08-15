@@ -469,8 +469,8 @@ li {
   /* Add a smooth transition for border changes */
   box-sizing: border-box;
   /* Include padding and border in the width calculation */
-width: 300px;
-    max-width: 100%;
+max-width: 300px;
+    width: 100%;
 
 }
 
@@ -762,8 +762,9 @@ header>div {
 /* Custom select styles */
 .custom-select {
   position: relative;
-  width: 400px;
-  max-width: 100%;
+  max-width: 400px;
+    width: 100%;
+
 }
 
 .selected-item {
