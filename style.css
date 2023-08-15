@@ -794,7 +794,7 @@ header>div {
   border-radius: 0 0 5px 5px;
   display: none;
   overflow-x: hidden;
-  margin-top: 1px;
+
   box-sizing: border-box;
   outline: none!important;
 }
