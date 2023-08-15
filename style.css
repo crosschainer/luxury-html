@@ -646,7 +646,9 @@ header>div {
   cursor: pointer;
 }
 
-.modal__header .modal__close:before { content: "\2715"; font-size: 18px; }
+.close-icon{
+  max-height: 18px;
+}
 
 .modal__content {
   padding-top: 1rem;
