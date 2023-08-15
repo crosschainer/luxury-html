@@ -785,21 +785,28 @@ header>div {
   position: absolute;
   top: 100%;
   left: 0;
-  width: calc(100% - 2px);
-  max-height: 400px; /* Set a maximum height for the dropdown */
-  overflow-y: auto; /* Enable scrolling when content exceeds the max height */
+  width: 100%;
+  max-height: 400px;
+  overflow-y: auto;
   border: 1px solid #ccc;
+  background: white;
   border-top: none;
   border-radius: 0 0 5px 5px;
   display: none;
   overflow-x: hidden;
+  margin-top: 1px;
+  box-sizing: border-box;
+  outline: none!important;
 }
 
 .search-input {
-  width: 100%;
   padding: 10px;
-  border: none;
-  outline: none;
+    display: block;
+    border: none;
+    border-radius: 0;
+    width: 100%;
+    box-sizing: border-box;
+    outline: none!important;
 }
 
 .token-list {
@@ -808,7 +815,7 @@ header>div {
   margin: 0;
   background-color: #fff;
   overflow-x: hidden;
-  margin-top: -1px;
+  border-top: 1px solid #ccc;
 }
 
 
@@ -818,6 +825,7 @@ header>div {
   padding: 10px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  margin: 0;
 }
 
 .token-option:hover {
