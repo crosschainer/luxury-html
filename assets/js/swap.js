@@ -136,6 +136,8 @@ document.addEventListener("lamdenWalletInfo", (response) => {
       address = response.detail.wallets[0];
       if (response.detail.locked == false) {
           locked = false;
+          connect_button.innerText = address.slice(0, 5) + "...";
+          connect_button.classList.add("connected-border");
       }
   }
   else if(response.detail.errors[0] == "Lamden Vault is Locked"){
