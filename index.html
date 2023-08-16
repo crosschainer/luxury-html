@@ -8,12 +8,12 @@
   <meta name="description" content="Luxuro is a cutting-edge decentralized exchange, revolutionizing the
                 way you trade stablecoins and similar assets on the Lamden blockchain with unparalleled efficiency and
                 minimal slippage." />
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="assets/css/style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <!-- Favicon -->
-  <link rel="icon" id="light-scheme-icon" href="logo.svg" type="image/svg" />
-  <link rel="icon" id="dark-scheme-icon" href="logo_white.svg" type="image/svg" />
+  <link rel="icon" id="light-scheme-icon" href="assets/img/logo.svg" type="image/svg" />
+  <link rel="icon" id="dark-scheme-icon" href="assets/img/logo_white.svg" type="image/svg" />
   <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet" />
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" />
 </head>
@@ -42,7 +42,7 @@
   <main style="display: flex">
     <section class="content" id="home">
       <div id="webgl-container">
-        <img src="logo.svg" alt="Luxuro Logo" id="logo" />
+        <img src="assets/img/logo.svg" alt="Luxuro Logo" id="logo" />
       </div>
       <h1>Welcome to Luxuro</h1>
       <p style="font-weight: normal">
@@ -128,17 +128,17 @@
             </div>
             <div>
               <div class="input-group-form">
-                <span>From <span id="from-token-name">Luxuro</span></span>
+                <span>From <span id="from-token-name">TAU</span></span>
                 <span>Balance: <span id="from-balance">0.00000000</span></span>
               </div>
               <div class="input-group-with-image-right">
-                <input type="number" placeholder="0.00" id="input-amount" />
-                <img src="logo.svg" alt="Luxuro Logo" class="input-image" id="input-image" />
+                <input type="text" class="numeric-input" placeholder="0.00" id="input-amount" />
+                <img src="assets/img/lamden.svg" alt="Lamden Logo" class="input-image" id="input-image" />
               </div>
             </div>
 
             <div class="swap-icon">
-              <img src="swap-vertical.svg" alt="Swap Icon" id="switch-button" />
+              <img src="assets/img/swap-vertical.svg" alt="Swap Icon" id="switch-button" />
             </div>
 
             <div>
@@ -147,8 +147,8 @@
                 <span>Balance: <span id="to-balance">0.00000000</span></span>
               </div>
               <div class="input-group-with-image-right">
-                <input type="number" placeholder="0.00" id="output-amount" />
-                <img src="logo.svg" alt="Luxuro Logo" class="input-image" id="output-image" />
+                <input type="text" class="numeric-input" placeholder="0.00" id="output-amount" />
+                <img src="assets/img/logo.svg" alt="Luxuro Logo" class="input-image" id="output-image" />
               </div>
             </div>
           </div>
@@ -170,7 +170,7 @@
             <div class="data">
               <span>Slippage tolerance:</span>
               <span class="settings-span"><span id="slippage-tolerance">0.1</span>%
-                <img src="cogwheel.svg" alt="Slippage settings" class="slippage-cog" id="slippage-button" /></span>
+                <img src="assets/img/cogwheel.svg" alt="Slippage settings" class="slippage-cog" id="slippage-button" /></span>
             </div>
           </div>
         </div>
@@ -200,7 +200,7 @@
               <td class="pool-info">$321.55m</td>
               <td class="pool-info">
                 <div class="icon-right-arrow">
-                  <img src="right-arrow.svg" class="arrow" alt="Right Arrow" />
+                  <img src="assets/img/right-arrow.svg" class="arrow" alt="Right Arrow" />
                 </div>
               </td>
             </tr>
@@ -251,7 +251,7 @@
               <td class="pool-info">$652.11m</td>
               <td class="pool-info">
                 <div class="icon-right-arrow">
-                  <img src="right-arrow.svg" class="arrow" alt="Right Arrow" />
+                  <img src="assets/img/right-arrow.svg" class="arrow" alt="Right Arrow" />
                 </div>
               </td>
             </tr>
@@ -308,24 +308,24 @@
           <h2 class="modal__title" id="token-select-modal-title">
             Token Select
           </h2>
-          <button class="modal__close" aria-label="Close modal" data-micromodal-close><img src="x-icon.svg" alt="Close Icon" class="close-icon"></button>
+          <button class="modal__close" aria-label="Close modal" data-micromodal-close><img src="assets/img/x-icon.svg" alt="Close Icon" class="close-icon"></button>
         </div>
         <div class="modal__content" id="token-select-modal-content">
           <p>Select a verified token to be used in the trade.</p>
           <div class="custom-select">
             <div class="selected-item" data-contract="con_luxuro">
-              <img src="logo.svg" alt="Token Image" class="token-image">
+              <img src="assets/img/logo.svg" alt="Token Image" class="token-image">
               <span class="token-name">Luxuro</span>
             </div>
             <div class="select-dropdown">
               <input type="text" placeholder="Search tokens..." class="search-input">
               <ul class="token-list">
                 <li class="token-option" data-token="Luxuro" data-contract="con_luxuro">
-                  <img src="logo.svg" alt="Token 1" class="token-image">
+                  <img src="assets/img/logo.svg" alt="Token 1" class="token-image">
                   <span class="token-name">Luxuro</span>
                 </li>
                 <li class="token-option" data-token="TAU" data-contract="currency">
-                  <img src="lamden.svg" alt="Token 1" class="token-image">
+                  <img src="assets/img/lamden.svg" alt="Token 1" class="token-image">
                   <span class="token-name">TAU</span>
                 </li>
 
@@ -352,7 +352,7 @@
           <h2 class="modal__title" id="slippage-settings-modal-title">
             Slippage Settings
           </h2>
-          <button class="modal__close" aria-label="Close modal" data-micromodal-close><img src="x-icon.svg" alt="Close Icon" class="close-icon"></button>
+          <button class="modal__close" aria-label="Close modal" data-micromodal-close><img src="assets/img/x-icon.svg" alt="Close Icon" class="close-icon"></button>
         </div>
         <div class="modal__content" id="slippage-settings-modal-content">
           <p>Setting a high slippage tolerance can help transactions succeed, but you may not get such a good price. Use
@@ -377,13 +377,21 @@
           <h2 class="modal__title" id="add-liquidity-modal-title">
             Add Liquidity
           </h2>
-          <button class="modal__close" aria-label="Close modal" data-micromodal-close><img src="x-icon.svg" alt="Close Icon" class="close-icon"></button>
+          <button class="modal__close" aria-label="Close modal" data-micromodal-close><img src="assets/img/x-icon.svg" alt="Close Icon" class="close-icon"></button>
         </div>
         <div class="modal__content" id="add-liquidity-modal-content">
           <p>Adding liquidity to a pool will earn you fees proportional to your share of the pool. Fees are added to
             your rewards, accrue in real time and can be claimed manually.</p>
-
-
+            <p class="mb-0">Balance: <span id="add-liquidity-balance-1">0.00000000</span></p>
+          <div class="input-group-form">
+            <input type="text" placeholder="0.00" id="add-liquidity-input-1" class="slippage-input numeric-input full-width-input">
+            <img src="assets/img/lamden.svg" alt="Token 1" class="input-image">
+          </div>
+          <p class="mb-0">Balance: <span id="add-liquidity-balance-2">0.00000000</span></p>
+          <div class="input-group-form mb-0">
+            <input type="text" placeholder="0.00" id="add-liquidity-input-2" class="slippage-input numeric-input full-width-input">
+            <img src="assets/img/logo.svg" alt="Token 2" class="input-image">
+          </div>
         </div>
         <div class="modal__footer">
           <button class="modal__btn modal__btn-primary" id="add-liquidity">Add Liquidity</button>
@@ -403,13 +411,17 @@
             Remove Liquidity
           </h2>
           <button class="modal__close" aria-label="Close modal" data-micromodal-close>
-            <img src="x-icon.svg" alt="Close Icon" class="close-icon">
+            <img src="assets/img/x-icon.svg" alt="Close Icon" class="close-icon">
           </button>
         </div>
         <div class="modal__content" id="remove-liquidity-modal-content">
           <p>Removing liquidity will burn the amount of liquidity tokens you specified. You will
             receive a proportionate amount of each underlying token, which are removed from the pool.</p>
-
+            <p class="mb-0">LP Balance: <span id="remove-liquidity-balance">0.00000000</span></p>
+            <div class="input-group-form mb-0">
+              <input type="text" placeholder="0.00" id="remove-liquidity-input" class="slippage-input numeric-input full-width-input">
+              
+            </div>
 
         </div>
         <div class="modal__footer">
@@ -425,8 +437,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/gsap.min.js"></script>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
   <script src="https://unpkg.com/micromodal/dist/micromodal.min.js"></script>
-  <script src="fancy.js"></script>
-  <script src="swap.js"></script>
+  <script src="assets/js/fancy.js"></script>
+  <script src="assets/js/swap.js"></script>
 </body>
 
 </html>

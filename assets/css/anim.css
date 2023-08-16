@@ -1,0 +1,17 @@
+.s-shape {
+    width: 300px;
+    height: 300px;
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto;
+    opacity: 1 !important;
+}
+
+.s-path {
+    fill: none;
+    stroke: #222;
+    stroke-width: 8;
+    stroke-dasharray: 200;
+    stroke-dashoffset: 200;
+}
+
