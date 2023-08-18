@@ -78,9 +78,8 @@ function updateSwapBalances () {
 }
 
 function executeSwap(){
-  document.dispatchEvent(
-    new CustomEvent('lamdenWalletConnect', { detail })
-  )
+  document.dispatchEvent(new CustomEvent('lamdenWalletGetInfo'))
+  
   if (installed == false) {
     Toastify({
       text: 'Please install Lamden Vault first.',
@@ -128,7 +127,12 @@ function executeSwap(){
       onClick: function () {} // Callback after click
     }).showToast()
   }
-}
+  if (installed == true && locked == false && address == null) {
+    document.dispatchEvent(
+      new CustomEvent('lamdenWalletConnect', { detail })
+    )
+    }
+  }
 
 
 function updateAddLiquidityBalances () {
