@@ -9,8 +9,8 @@ const detail = JSON.stringify({
 })
 
 var installed = false
-var address
-var locked = true
+var address = null
+var locked = false
 
 // Global
 const connect_button = document.getElementById('connect-wallet')
@@ -76,6 +76,63 @@ function updateSwapBalances () {
     document.getElementById('to-balance').innerHTML = balance
   })
 }
+
+function executeSwap(){
+  document.dispatchEvent(new CustomEvent('lamdenWalletGetInfo'))
+  if (installed == false) {
+    Toastify({
+      text: 'Please install Lamden Vault first.',
+      duration: 3000,
+      avatar: 'assets/img/x-icon.svg',
+      gravity: 'bottom', // `top` or `bottom`
+      position: 'right', // `left`, `center` or `right`
+      stopOnFocus: false, // Prevents dismissing of toast on hover
+      style: {
+        background: '#FF2400',
+        color: '#fff'
+      },
+      onClick: function () {} // Callback after click
+    }).showToast()
+    return
+  }
+  else if (locked == true) {
+    Toastify({
+      text: 'Please unlock your Lamden Vault first.',
+      duration: 3000,
+      avatar: 'assets/img/x-icon.svg',
+      gravity: 'bottom', // `top` or `bottom`
+      position: 'right', // `left`, `center` or `right`
+      stopOnFocus: false, // Prevents dismissing of toast on hover
+      style: {
+        background: '#FF2400',
+        color: '#fff'
+      },
+      onClick: function () {} // Callback after click
+    }).showToast()
+    return
+  }
+  else if (installed == true && locked == false && address == null) {
+    document.dispatchEvent(
+      new CustomEvent('lamdenWalletConnect', { detail })
+    )
+  }
+  else if (installed == true && locked == false && address != null) {
+    Toastify({
+      text: 'Not implemented!',
+      duration: 3000,
+      avatar: 'assets/img/x-icon.svg',
+      gravity: 'bottom', // `top` or `bottom`
+      position: 'right', // `left`, `center` or `right`
+      stopOnFocus: false, // Prevents dismissing of toast on hover
+      style: {
+        background: '#FF2400',
+        color: '#fff'
+      },
+      onClick: function () {} // Callback after click
+    }).showToast()
+  }
+}
+
 
 function updateAddLiquidityBalances () {
   /*pullBalance('con_luxuro', address).then(balance => {
@@ -155,6 +212,7 @@ document.addEventListener('lamdenWalletInfo', response => {
       locked = false
       connect_button.innerText = address.slice(0, 5) + '...'
       connect_button.classList.add('connected-border')
+      swap_button.innerText = 'Swap';
       updateSwapBalances()
     }
   } else if (response.detail.errors[0] == 'Lamden Vault is Locked') {
@@ -164,19 +222,7 @@ document.addEventListener('lamdenWalletInfo', response => {
 
 swap_button.addEventListener('click', event => {
   event.preventDefault()
-  Toastify({
-    text: 'Not implemented!',
-    duration: 3000,
-    avatar: 'assets/img/x-icon.svg',
-    gravity: 'bottom', // `top` or `bottom`
-    position: 'right', // `left`, `center` or `right`
-    stopOnFocus: false, // Prevents dismissing of toast on hover
-    style: {
-      background: '#FF2400',
-      color: '#fff'
-    },
-    onClick: function () {} // Callback after click
-  }).showToast()
+  executeSwap()
 })
 
 input_button.addEventListener('click', event => {
