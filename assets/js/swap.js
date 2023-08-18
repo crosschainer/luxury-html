@@ -77,8 +77,7 @@ function updateSwapBalances () {
   })
 }
 
-function executeSwap(){
-
+function checkWalletConnection () {
   if (installed == false) {
     Toastify({
       text: 'Please install Lamden Vault first.',
@@ -93,9 +92,8 @@ function executeSwap(){
       },
       onClick: function () {} // Callback after click
     }).showToast()
-    return
-  }
-  else if (locked == true) {
+    return false
+  } else if (locked == true) {
     Toastify({
       text: 'Please unlock your Lamden Vault first.',
       duration: 3000,
@@ -109,30 +107,14 @@ function executeSwap(){
       },
       onClick: function () {} // Callback after click
     }).showToast()
-    return
+    return false
+  } else if (installed == true && locked == false && address == null) {
+    document.dispatchEvent(new CustomEvent('lamdenWalletConnect', { detail }))
+    return false
+  } else if (installed == true && locked == false && address != null) {
+    return true
   }
-  else if (installed == true && locked == false && address != null) {
-    Toastify({
-      text: 'Not implemented!',
-      duration: 3000,
-      avatar: 'assets/img/x-icon.svg',
-      gravity: 'bottom', // `top` or `bottom`
-      position: 'right', // `left`, `center` or `right`
-      stopOnFocus: false, // Prevents dismissing of toast on hover
-      style: {
-        background: '#FF2400',
-        color: '#fff'
-      },
-      onClick: function () {} // Callback after click
-    }).showToast()
-  }
-  if (installed == true && locked == false && address == null) {
-    document.dispatchEvent(
-      new CustomEvent('lamdenWalletConnect', { detail })
-    )
-    }
-  }
-
+}
 
 function updateAddLiquidityBalances () {
   /*pullBalance('con_luxuro', address).then(balance => {
@@ -162,44 +144,7 @@ document.addEventListener('readystatechange', () => {
     setTimeout(function () {
       connect_button.addEventListener('click', event => {
         event.preventDefault()
-        
-        if (installed == false) {
-          Toastify({
-            text: 'Please install Lamden Vault first.',
-            duration: 3000,
-            avatar: 'assets/img/x-icon.svg',
-            gravity: 'bottom', // `top` or `bottom`
-            position: 'right', // `left`, `center` or `right`
-            stopOnFocus: false, // Prevents dismissing of toast on hover
-            style: {
-              background: '#FF2400',
-              color: '#fff'
-            },
-            onClick: function () {} // Callback after click
-          }).showToast()
-          return
-        }
-        if (locked == true) {
-          Toastify({
-            text: 'Please unlock your Lamden Vault first.',
-            duration: 3000,
-            avatar: 'assets/img/x-icon.svg',
-            gravity: 'bottom', // `top` or `bottom`
-            position: 'right', // `left`, `center` or `right`
-            stopOnFocus: false, // Prevents dismissing of toast on hover
-            style: {
-              background: '#FF2400',
-              color: '#fff'
-            },
-            onClick: function () {} // Callback after click
-          }).showToast()
-          return
-        }
-        if (installed == true) {
-          document.dispatchEvent(
-            new CustomEvent('lamdenWalletConnect', { detail })
-          )
-        }
+        checkWalletConnection()
       })
     }, 1000)
   }
@@ -213,7 +158,7 @@ document.addEventListener('lamdenWalletInfo', response => {
       locked = false
       connect_button.innerText = address.slice(0, 5) + '...'
       connect_button.classList.add('connected-border')
-      swap_button.innerText = 'Swap';
+      swap_button.innerText = 'Swap'
       updateSwapBalances()
     }
   } else if (response.detail.errors[0] == 'Lamden Vault is Locked') {
@@ -223,7 +168,22 @@ document.addEventListener('lamdenWalletInfo', response => {
 
 swap_button.addEventListener('click', event => {
   event.preventDefault()
-  executeSwap()
+  connection = checkWalletConnection()
+  if (connection) {
+    Toastify({
+      text: 'Not implemented!',
+      duration: 3000,
+      avatar: 'assets/img/x-icon.svg',
+      gravity: 'bottom', // `top` or `bottom`
+      position: 'right', // `left`, `center` or `right`
+      stopOnFocus: false, // Prevents dismissing of toast on hover
+      style: {
+        background: '#FF2400',
+        color: '#fff'
+      },
+      onClick: function () {} // Callback after click
+    }).showToast()
+  }
 })
 
 input_button.addEventListener('click', event => {
@@ -259,36 +219,45 @@ slippage_button.addEventListener('click', event => {
 add_liquidity_buttons.forEach(button => {
   button.addEventListener('click', event => {
     event.preventDefault()
-    updateAddLiquidityBalances();
-    MicroModal.show('add-liquidity-modal')
-    opened_modal = 'add-liquidity'
+    connection = checkWalletConnection()
+    if (connection) {
+      updateAddLiquidityBalances()
+      MicroModal.show('add-liquidity-modal')
+      opened_modal = 'add-liquidity'
+    }
   })
 })
 
 remove_liquidity_buttons.forEach(button => {
   button.addEventListener('click', event => {
     event.preventDefault()
-    MicroModal.show('remove-liquidity-modal')
-    opened_modal = 'remove-liquidity'
+    connection = checkWalletConnection()
+    if (connection) {
+      MicroModal.show('remove-liquidity-modal')
+      opened_modal = 'remove-liquidity'
+    }
   })
 })
 
 claim_rewards_buttons.forEach(button => {
   button.addEventListener('click', event => {
     event.preventDefault()
-    Toastify({
-      text: 'Not implemented!',
-      duration: 3000,
-      avatar: 'assets/img/x-icon.svg',
-      gravity: 'bottom', // `top` or `bottom`
-      position: 'right', // `left`, `center` or `right`
-      stopOnFocus: false, // Prevents dismissing of toast on hover
-      style: {
-        background: '#FF2400',
-        color: '#fff'
-      },
-      onClick: function () {} // Callback after click
-    }).showToast()
+    connection = checkWalletConnection()
+    if (connection) {
+      Toastify({
+        text: 'Not implemented!',
+        duration: 3000,
+        avatar: 'assets/img/x-icon.svg',
+        gravity: 'bottom', // `top` or `bottom`
+        position: 'right', // `left`, `center` or `right`
+        stopOnFocus: false, // Prevents dismissing of toast on hover
+        style: {
+          background: '#FF2400',
+          color: '#fff'
+        },
+        onClick: function () {} // Callback after click
+      }).showToast()
+    }
   })
 })
 
