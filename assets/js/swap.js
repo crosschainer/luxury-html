@@ -78,7 +78,6 @@ function updateSwapBalances () {
 }
 
 function executeSwap(){
-  document.dispatchEvent(new CustomEvent('lamdenWalletGetInfo'))
   if (installed == false) {
     Toastify({
       text: 'Please install Lamden Vault first.',
@@ -162,6 +161,7 @@ document.addEventListener('readystatechange', () => {
     setTimeout(function () {
       connect_button.addEventListener('click', event => {
         event.preventDefault()
+        document.dispatchEvent(new CustomEvent('lamdenWalletGetInfo'))
         if (installed == false) {
           Toastify({
             text: 'Please install Lamden Vault first.',
