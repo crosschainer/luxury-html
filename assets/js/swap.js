@@ -82,7 +82,6 @@ function checkWalletConnection () {
     Toastify({
       text: 'Please install Lamden Vault first.',
       duration: 3000,
-      avatar: 'assets/img/x-icon.svg',
       gravity: 'bottom', // `top` or `bottom`
       position: 'right', // `left`, `center` or `right`
       stopOnFocus: false, // Prevents dismissing of toast on hover
@@ -97,7 +96,6 @@ function checkWalletConnection () {
     Toastify({
       text: 'Please unlock your Lamden Vault first.',
       duration: 3000,
-      avatar: 'assets/img/x-icon.svg',
       gravity: 'bottom', // `top` or `bottom`
       position: 'right', // `left`, `center` or `right`
       stopOnFocus: false, // Prevents dismissing of toast on hover
@@ -166,6 +164,53 @@ document.addEventListener('lamdenWalletInfo', response => {
   }
 })
 
+document.addEventListener("lamdenWalletTxStatus", (response) => {
+  if (response.detail.data.resultInfo.title == "Transaction Pending") {
+    Toastify({
+      text: 'The transaction is pending.',
+      duration: 3000,
+      gravity: 'bottom', // `top` or `bottom`
+      position: 'right', // `left`, `center` or `right`
+      stopOnFocus: false, // Prevents dismissing of toast on hover
+      style: {
+        background: '#FFE300',
+        color: '#000'
+      },
+      onClick: function () {} // Callback after click
+    }).showToast()
+  }
+  
+  if (response.detail.data.resultInfo.title == "Transaction Successful") {
+    Toastify({
+      text: 'The transaction was successful.',
+      duration: 3000,
+      gravity: 'bottom', // `top` or `bottom`
+      position: 'right', // `left`, `center` or `right`
+      stopOnFocus: false, // Prevents dismissing of toast on hover
+      style: {
+        background: '#9bff00',
+        color: '#000'
+      },
+      onClick: function () {} // Callback after click
+    }).showToast()
+  }
+  if (response.detail.data.resultInfo.title == "Transaction Failed") {
+    Toastify({
+      text: 'The transaction failed.',
+      duration: 3000,
+      gravity: 'bottom', // `top` or `bottom`
+      position: 'right', // `left`, `center` or `right`
+      stopOnFocus: false, // Prevents dismissing of toast on hover
+      style: {
+        background: '#FF2400',
+        color: '#fff'
+      },
+      onClick: function () {} // Callback after click
+    }).showToast()
+  }
+  document.dispatchEvent(new CustomEvent('lamdenWalletGetInfo'))
+});
+
 swap_button.addEventListener('click', event => {
   event.preventDefault()
   connection = checkWalletConnection()
@@ -173,7 +218,6 @@ swap_button.addEventListener('click', event => {
     Toastify({
       text: 'Not implemented!',
       duration: 3000,
-      avatar: 'assets/img/x-icon.svg',
       gravity: 'bottom', // `top` or `bottom`
       position: 'right', // `left`, `center` or `right`
       stopOnFocus: false, // Prevents dismissing of toast on hover
@@ -267,7 +311,6 @@ claim_rewards_buttons.forEach(button => {
       Toastify({
         text: 'Not implemented!',
         duration: 3000,
-        avatar: 'assets/img/x-icon.svg',
         gravity: 'bottom', // `top` or `bottom`
         position: 'right', // `left`, `center` or `right`
         stopOnFocus: false, // Prevents dismissing of toast on hover
@@ -348,7 +391,6 @@ selectButton.addEventListener('click', event => {
       Toastify({
         text: 'Cannot select the same token for both sides.',
         duration: 3000,
-        avatar: 'assets/img/x-icon.svg',
         gravity: 'bottom', // `top` or `bottom`
         position: 'right', // `left`, `center` or `right`
         stopOnFocus: false, // Prevents dismissing of toast on hover
@@ -378,7 +420,6 @@ selectButton.addEventListener('click', event => {
       Toastify({
         text: 'Cannot select the same token for both sides.',
         duration: 3000,
-        avatar: 'assets/img/x-icon.svg',
         gravity: 'bottom', // `top` or `bottom`
         position: 'right', // `left`, `center` or `right`
         stopOnFocus: false, // Prevents dismissing of toast on hover
