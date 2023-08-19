@@ -380,6 +380,18 @@ li {
   cursor: pointer;
 }
 
+#add-liquidity-balance-1 {
+  cursor: pointer;
+}
+
+#add-liquidity-balance-2 {
+  cursor: pointer;
+}
+
+#remove-liquidity-balance {
+  cursor: pointer;
+}
+
 .toastify{
   padding: 10px 20px !important;
     color: #fff;

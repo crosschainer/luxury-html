@@ -116,13 +116,13 @@ function checkWalletConnection () {
   }
 }
 
-function updateAddLiquidityBalances () {
-  /*pullBalance('con_luxuro', address).then(balance => {
+function updateAddLiquidityModal (tokens) {
+  pullBalance(tokens[0], address).then(balance => {
     document.getElementById('add-liquidity-balance-1').innerHTML = balance
   })
-  pullBalance('con_lamden_token', address).then(balance => {
-    document.getElementById('add-liquidity-balance-1').innerHTML = balance
-  })*/
+  pullBalance(tokens[1], address).then(balance => {
+    document.getElementById('add-liquidity-balance-2').innerHTML = balance
+  })
 }
 
 numericInputs.forEach(input => {
@@ -204,6 +204,25 @@ document.getElementById('to-balance').addEventListener('click', event => {
     document.getElementById('to-balance').innerHTML
 })
 
+
+document.getElementById('add-liquidity-balance-1').addEventListener('click', event => {
+  event.preventDefault()
+  document.getElementById('add-liquidity-input-1').value =
+    document.getElementById('add-liquidity-balance-1').innerHTML
+})
+
+document.getElementById('add-liquidity-balance-2').addEventListener('click', event => {
+  event.preventDefault()
+  document.getElementById('add-liquidity-input-2').value =
+    document.getElementById('add-liquidity-balance-2').innerHTML
+})
+
+document.getElementById('remove-liquidity-balance').addEventListener('click', event => {
+  event.preventDefault()
+  document.getElementById('remove-liquidity-input').value =
+    document.getElementById('remove-liquidity-balance').innerHTML
+})
+
 output_button.addEventListener('click', event => {
   event.preventDefault()
   MicroModal.show('token-select-modal')
@@ -221,7 +240,8 @@ add_liquidity_buttons.forEach(button => {
     event.preventDefault()
     connection = checkWalletConnection()
     if (connection) {
-      updateAddLiquidityBalances()
+      tokens = event.target.dataset.tokens.split(';')
+      updateAddLiquidityModal(tokens)
       MicroModal.show('add-liquidity-modal')
       opened_modal = 'add-liquidity'
     }
