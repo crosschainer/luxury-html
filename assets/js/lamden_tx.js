@@ -5,7 +5,7 @@ function approveToken (contract, amount, spender) {
       if (approved_amount < amount) {
         let left_to_approve = amount - approved_amount
         left_to_approve = left_to_approve.toFixed(8)
-        const detail = JSON.stringify({
+        let tx = JSON.stringify({
           contractName: contract,
           methodName: 'approve',
           networkName: 'arko',
@@ -16,7 +16,7 @@ function approveToken (contract, amount, spender) {
           },
           stampLimit: 100,
         })
-        document.dispatchEvent(new CustomEvent('lamdenWalletSendTx', { detail }))
+        document.dispatchEvent(new CustomEvent('lamdenWalletSendTx', { tx }))
         return false
       } else {
         return true
@@ -48,7 +48,7 @@ function createPool(){
     let approved_token_1 = approveToken(token_list[0]['contract'], token_list[0]['amount'], detail_decoded['contractName']);
     let approved_token_2 = approveToken(token_list[1]['contract'], token_list[1]['amount'], detail_decoded['contractName']);
     if (approved_token_1 && approved_token_2){
-        const detail = JSON.stringify({
+        let tx = JSON.stringify({
             contractName: detail_decoded['contractName'],
             methodName: 'create_pool',
             networkName: 'arko',
@@ -59,7 +59,7 @@ function createPool(){
             },
             stampLimit: 500,
           })
-          document.dispatchEvent(new CustomEvent('lamdenWalletSendTx', { detail }))
+          document.dispatchEvent(new CustomEvent('lamdenWalletSendTx', { tx }))
     }
 
     return;
