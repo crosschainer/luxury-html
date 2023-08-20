@@ -30,6 +30,8 @@ const claim_rewards_buttons = document.querySelectorAll('.claim-rewards')
 const create_pool_button = document.getElementById('create-pool-button')
 const create_pool_token_1 = document.getElementById('create-pool-token-1')
 const create_pool_token_2 = document.getElementById('create-pool-token-2')
+const create_pool_input_1 = document.getElementById('create-pool-input-1')
+const create_pool_input_2 = document.getElementById('create-pool-input-2')
 const create_pool = document.getElementById('create-pool')
 
 // Custom Token Selector
@@ -90,6 +92,35 @@ function updateCreatePoolBalances () {
   })
 }
 
+async function checkApprovalsCreatePool() {
+  try {
+    const approval_1 = await getApproval(
+      create_pool_token_1.dataset.contract,
+      address,
+      detail_decoded.contractName
+    );
+    
+    const approval_2 = await getApproval(
+      create_pool_token_2.dataset.contract,
+      address,
+      detail_decoded.contractName
+    );
+
+    if (approval_1 < create_pool_token_1.value) {
+      create_pool.innerHTML = 'Approve ' + create_pool_token_1.value + ' ' + create_pool_token_1.alt
+    }
+    if (approval_2 < create_pool_token_2.value) {
+      create_pool.innerHTML = 'Approve ' + create_pool_token_2.value + ' ' + create_pool_token_2.alt
+    }
+    if (approval_1 >= create_pool_token_1.value && approval_2 >= create_pool_token_2.value) {
+      create_pool.innerHTML = 'Create Pool'
+    }
+  } catch (error) {
+    console.error('An error occurred:', error);
+    // Handle the error if needed
+  }
+}
+
 function handleTokenOptionClick (event) {
   event.stopPropagation()
   const option = event.currentTarget
@@ -119,7 +150,7 @@ function ImgError (source) {
   return true
 }
 
-function updateTokenList () {
+async function updateTokenList () {
   pullAvailableTokens().then(tokens => {
     tokenList.innerHTML = ''
     tokens.forEach(token => {
@@ -193,11 +224,17 @@ function updateAddLiquidityModal (tokens) {
 numericInputs.forEach(input => {
   input.addEventListener('input', event => {
     sanitizeInput(event.target)
+    if (event.target.id == 'create-pool-input-1' || event.target.id == 'create-pool-input-2') {
+      checkApprovalsCreatePool()
+    }
   })
   input.addEventListener('paste', event => {
     // Delay the sanitization process to handle pasted content
     setTimeout(function () {
       sanitizeInput(event.target)
+      if (event.target.id == 'create-pool-input-1' || event.target.id == 'create-pool-input-2') {
+        checkApprovalsCreatePool()
+      }
     }, 0)
   })
 })
@@ -372,6 +409,8 @@ document
     opened_modal = 'create-pool-token-2'
   })
 
+
+
 output_button.addEventListener('click', event => {
   event.preventDefault()
   MicroModal.show('token-select-modal')
@@ -389,8 +428,10 @@ create_pool_button.addEventListener('click', event => {
   connection = checkWalletConnection()
   if (connection) {
     updateCreatePoolBalances()
-    MicroModal.show('create-pool-modal')
-    opened_modal = 'create-pool'
+    
+      MicroModal.show('create-pool-modal')
+      opened_modal = 'create-pool'
+    
   }
 })
 
@@ -575,6 +616,7 @@ selectButton.addEventListener('click', event => {
     create_pool_token_1.alt = selectedToken.querySelector('span').innerHTML
 
     updateCreatePoolBalances()
+    checkApprovalsCreatePool()
     MicroModal.close('token-select-modal')
   }
 
@@ -603,6 +645,7 @@ selectButton.addEventListener('click', event => {
     create_pool_token_2.src = selectedToken.querySelector('img').src
     create_pool_token_2.alt = selectedToken.querySelector('span').innerHTML
     updateCreatePoolBalances()
+    checkApprovalsCreatePool()
     MicroModal.close('token-select-modal')
   }
 })

@@ -11,19 +11,14 @@ async function pullBalance(contract, address) {
   
       let balance = 0;
       try {
-        balance =
-          res[contract]['balances'][address]['__hash_self__']['__fixed__'];
-      } catch {
-        try {
+        if (res[contract]['balances'][address]['__hash_self__']['__fixed__'] != undefined)
+          balance = res[contract]['balances'][address]['__hash_self__']['__fixed__'];
+        else if (res[contract]['balances'][address]['__fixed__'] != undefined)
           balance = res[contract]['balances'][address]['__fixed__'];
-        } catch {
-          try{
-            balance = res[contract]['balances'][address];
-          }
-          catch{
+        else
+          balance = res[contract]['balances'][address];
+      } catch {
             balance = 0;
-          }
-        }
       }
   
       return Number(balance).toFixed(8);
