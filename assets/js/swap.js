@@ -7,6 +7,7 @@ const detail = JSON.stringify({
   networkType: 'mainnet',
   networkName: 'arko'
 })
+const detail_decoded = JSON.parse(detail);
 
 var installed = false
 var address = null
@@ -29,6 +30,7 @@ const claim_rewards_buttons = document.querySelectorAll('.claim-rewards')
 const create_pool_button = document.getElementById('create-pool-button')
 const create_pool_token_1 = document.getElementById('create-pool-token-1')
 const create_pool_token_2 = document.getElementById('create-pool-token-2')
+const create_pool = document.getElementById('create-pool')
 
 // Custom Token Selector
 const tokenSelect = document.querySelector('.custom-select')
@@ -88,33 +90,33 @@ function updateCreatePoolBalances () {
   })
 }
 
-function handleTokenOptionClick(event) {
-  event.stopPropagation();
-  const option = event.currentTarget;
-  const tokenName = option.dataset.token;
-  const tokenIcon = option.querySelector('img').src;
-  const tokenContract = option.dataset.contract;
+function handleTokenOptionClick (event) {
+  event.stopPropagation()
+  const option = event.currentTarget
+  const tokenName = option.dataset.token
+  const tokenIcon = option.querySelector('img').src
+  const tokenContract = option.dataset.contract
 
-  selectedToken.dataset.contract = tokenContract;
+  selectedToken.dataset.contract = tokenContract
   selectedToken.innerHTML = `
     <img src="${tokenIcon}" alt="${tokenName}" class="token-image" />
     <span>${tokenName}</span>
-  `;
+  `
 
-  tokenSelect.classList.remove('open');
+  tokenSelect.classList.remove('open')
 }
 
-function attachEventListenersToTokenOptions() {
-  const tokenOptions = document.querySelectorAll('.token-option');
+function attachEventListenersToTokenOptions () {
+  const tokenOptions = document.querySelectorAll('.token-option')
   tokenOptions.forEach(option => {
-    option.addEventListener('click', handleTokenOptionClick);
-  });
+    option.addEventListener('click', handleTokenOptionClick)
+  })
 }
 
-function ImgError(source){
-  source.src = "assets/img/no-icon.svg";
-  source.onerror = "";
-  return true;
+function ImgError (source) {
+  source.src = 'assets/img/no-icon.svg'
+  source.onerror = ''
+  return true
 }
 
 function updateTokenList () {
@@ -128,9 +130,8 @@ function updateTokenList () {
           <span>${token.TokenName}</span>
         </li>
       `
-      }
-      else{
-      tokenList.innerHTML += `
+      } else {
+        tokenList.innerHTML += `
         <li class="token-option" data-token="${token.TokenName}" data-contract="${token.TokenContract}">
           <img src="https://static.tauhq.com/file/wwwtauhqcom/img/token_logo/${token.TokenContract}.jpg" onerror="ImgError(this)" alt="${token.TokenName}" class="token-image" />
           <span>${token.TokenName}</span>
@@ -139,7 +140,7 @@ function updateTokenList () {
       }
     })
     // After updating the HTML, reattach event listeners
-    attachEventListenersToTokenOptions();
+    attachEventListenersToTokenOptions()
   })
 }
 
@@ -230,8 +231,8 @@ document.addEventListener('lamdenWalletInfo', response => {
   }
 })
 
-document.addEventListener("lamdenWalletTxStatus", (response) => {
-  if (response.detail.data.resultInfo.title == "Transaction Pending") {
+document.addEventListener('lamdenWalletTxStatus', response => {
+  if (response.detail.data.resultInfo.title == 'Transaction Pending') {
     Toastify({
       text: 'The transaction is pending.',
       duration: 3000,
@@ -245,8 +246,8 @@ document.addEventListener("lamdenWalletTxStatus", (response) => {
       onClick: function () {} // Callback after click
     }).showToast()
   }
-  
-  if (response.detail.data.resultInfo.title == "Transaction Successful") {
+
+  if (response.detail.data.resultInfo.title == 'Transaction Successful') {
     Toastify({
       text: 'The transaction was successful.',
       duration: 3000,
@@ -260,7 +261,7 @@ document.addEventListener("lamdenWalletTxStatus", (response) => {
       onClick: function () {} // Callback after click
     }).showToast()
   }
-  if (response.detail.data.resultInfo.title == "Transaction Failed") {
+  if (response.detail.data.resultInfo.title == 'Transaction Failed') {
     Toastify({
       text: 'The transaction failed.',
       duration: 3000,
@@ -275,7 +276,7 @@ document.addEventListener("lamdenWalletTxStatus", (response) => {
     }).showToast()
   }
   document.dispatchEvent(new CustomEvent('lamdenWalletGetInfo'))
-});
+})
 
 swap_button.addEventListener('click', event => {
   event.preventDefault()
@@ -314,48 +315,61 @@ document.getElementById('to-balance').addEventListener('click', event => {
     document.getElementById('to-balance').innerHTML
 })
 
+document
+  .getElementById('add-liquidity-balance-1')
+  .addEventListener('click', event => {
+    event.preventDefault()
+    document.getElementById('add-liquidity-input-1').value =
+      document.getElementById('add-liquidity-balance-1').innerHTML
+  })
 
-document.getElementById('add-liquidity-balance-1').addEventListener('click', event => {
-  event.preventDefault()
-  document.getElementById('add-liquidity-input-1').value =
-    document.getElementById('add-liquidity-balance-1').innerHTML
-})
+document
+  .getElementById('add-liquidity-balance-2')
+  .addEventListener('click', event => {
+    event.preventDefault()
+    document.getElementById('add-liquidity-input-2').value =
+      document.getElementById('add-liquidity-balance-2').innerHTML
+  })
 
-document.getElementById('add-liquidity-balance-2').addEventListener('click', event => {
-  event.preventDefault()
-  document.getElementById('add-liquidity-input-2').value =
-    document.getElementById('add-liquidity-balance-2').innerHTML
-})
+document
+  .getElementById('remove-liquidity-balance')
+  .addEventListener('click', event => {
+    event.preventDefault()
+    document.getElementById('remove-liquidity-input').value =
+      document.getElementById('remove-liquidity-balance').innerHTML
+  })
 
-document.getElementById('remove-liquidity-balance').addEventListener('click', event => {
-  event.preventDefault()
-  document.getElementById('remove-liquidity-input').value =
-    document.getElementById('remove-liquidity-balance').innerHTML
-})
+document
+  .getElementById('create-pool-balance-1')
+  .addEventListener('click', event => {
+    event.preventDefault()
+    document.getElementById('create-pool-input-1').value =
+      document.getElementById('create-pool-balance-1').innerHTML
+  })
 
-document.getElementById('create-pool-balance-1').addEventListener('click', event => {
-  event.preventDefault()
-  document.getElementById('create-pool-input-1').value =
-    document.getElementById('create-pool-balance-1').innerHTML
-})
+document
+  .getElementById('create-pool-balance-2')
+  .addEventListener('click', event => {
+    event.preventDefault()
+    document.getElementById('create-pool-input-2').value =
+      document.getElementById('create-pool-balance-2').innerHTML
+  })
 
-document.getElementById('create-pool-balance-2').addEventListener('click', event => {
-  event.preventDefault()
-  document.getElementById('create-pool-input-2').value =
-    document.getElementById('create-pool-balance-2').innerHTML
-})
+document
+  .getElementById('create-pool-token-1')
+  .addEventListener('click', event => {
+    event.preventDefault()
+    MicroModal.show('token-select-modal')
+    opened_modal = 'create-pool-token-1'
+  })
 
-document.getElementById('create-pool-token-1').addEventListener('click', event => {
-  event.preventDefault()
-  MicroModal.show('token-select-modal')
-  opened_modal = 'create-pool-token-1'
-})
-
-document.getElementById('create-pool-token-2').addEventListener('click', event => {
-  event.preventDefault()
-  MicroModal.show('token-select-modal')
-  opened_modal = 'create-pool-token-2'
-})
+document
+  .getElementById('create-pool-token-2')
+  .addEventListener('click', event => {
+    event.preventDefault()
+    MicroModal.show('token-select-modal')
+    opened_modal = 'create-pool-token-2'
+  })
 
 output_button.addEventListener('click', event => {
   event.preventDefault()
@@ -376,6 +390,14 @@ create_pool_button.addEventListener('click', event => {
     updateCreatePoolBalances()
     MicroModal.show('create-pool-modal')
     opened_modal = 'create-pool'
+  }
+})
+
+create_pool.addEventListener('click', event => {
+  event.preventDefault()
+  connection = checkWalletConnection()
+  if (connection) {
+    createPool()
   }
 })
 
@@ -441,7 +463,6 @@ searchInput.addEventListener('input', () => {
     option.style.display = tokenName.includes(searchTerm) ? 'flex' : 'none'
   })
 })
-
 
 slippageSave.addEventListener('click', event => {
   event.preventDefault()
@@ -552,7 +573,6 @@ selectButton.addEventListener('click', event => {
     create_pool_token_1.src = selectedToken.querySelector('img').src
     create_pool_token_1.alt = selectedToken.querySelector('span').innerHTML
 
-
     updateCreatePoolBalances()
     MicroModal.close('token-select-modal')
   }
@@ -584,8 +604,6 @@ selectButton.addEventListener('click', event => {
     updateCreatePoolBalances()
     MicroModal.close('token-select-modal')
   }
-
-
 })
 
 switch_button.addEventListener('click', event => {
@@ -607,16 +625,14 @@ switch_button.addEventListener('click', event => {
   updateSwapBalances()
 })
 
-
 // temp fix for close create pool modal bcz when token select was open on top of it, it was not closing anymore
-const closeCreatePoolModal = document.querySelector("#create-pool-modal .modal__close");
-const closeBtn = document.querySelector("#create-pool-modal .modal__btn-close");
-  closeCreatePoolModal.addEventListener("click", () => {
-    MicroModal.close("create-pool-modal");
-  }
+const closeCreatePoolModal = document.querySelector(
+  '#create-pool-modal .modal__close'
 )
-closeBtn.addEventListener("click", () => {
-    MicroModal.close("create-pool-modal");
-  }
-)
-
+const closeBtn = document.querySelector('#create-pool-modal .modal__btn-close')
+closeCreatePoolModal.addEventListener('click', () => {
+  MicroModal.close('create-pool-modal')
+})
+closeBtn.addEventListener('click', () => {
+  MicroModal.close('create-pool-modal')
+})

@@ -17,7 +17,12 @@ async function pullBalance(contract, address) {
         try {
           balance = res[contract]['balances'][address]['__fixed__'];
         } catch {
-          balance = 0;
+          try{
+            balance = res[contract]['balances'][address];
+          }
+          catch{
+            balance = 0;
+          }
         }
       }
   
@@ -49,5 +54,36 @@ async function pullBalance(contract, address) {
     } catch (error) {
       console.error("Error fetching tokens:", error);
       return "Error fetching tokens";
+    }
+  }
+
+  async function getApproval(contract, address, spender) {
+    try {
+      const response = await fetch(
+        'https://arko-bs-1.lamden.io/current/all/' +
+        contract +
+        '/balances/' +
+        address
+      );
+  
+      const res = await response.json();
+  
+      let balance = 0;
+      try {
+        balance =
+          res[contract]['balances'][address]['__hash_self__'][spender]['__fixed__'];
+      } catch {
+        try{
+          balance = res[contract]['balances'][address]['__hash_self__'][spender]
+        }
+        catch{
+          balance = 0;
+        }
+      }
+  
+      return Number(balance).toFixed(8);
+    } catch (error) {
+      console.error("Error fetching approval:", error);
+      return "Error fetching approval";
     }
   }
