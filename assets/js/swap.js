@@ -232,6 +232,7 @@ document.addEventListener('lamdenWalletInfo', response => {
 })
 
 document.addEventListener('lamdenWalletTxStatus', response => {
+  console.log(response.detail);
   if (response.detail.data.resultInfo.title == 'Transaction Pending') {
     Toastify({
       text: 'The transaction is pending.',

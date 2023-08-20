@@ -81,8 +81,6 @@ async function pullBalance(contract, address) {
         balance = 0;
         
       }
-      console.log(res[contract]['balances'][address][spender]['__fixed__']);
-      console.log(res[contract]['balances'][address][spender]);
       return Number(balance).toFixed(8);
     } catch (error) {
       console.error("Error fetching approval:", error);

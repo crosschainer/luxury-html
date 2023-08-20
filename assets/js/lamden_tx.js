@@ -1,32 +1,39 @@
 function approveToken (contract, amount, spender) {
-  let current_approved_amount = 0
-  getApproval(contract, address, spender).then(approved_amount => {
-    current_approved_amount = approved_amount;
-    if (approved_amount < amount) {
-      let left_to_approve = amount - approved_amount
-      left_to_approve = left_to_approve.toFixed(8)
-      let tx = JSON.stringify({
-        contractName: contract,
-        methodName: 'approve',
-        networkName: 'arko',
-        networkType: 'mainnet',
-        kwargs: {
-          amount: Number(left_to_approve),
-          to: spender
-        },
-        stampLimit: 100
-      });
-      document.dispatchEvent(new CustomEvent('lamdenWalletSendTx', { tx }))
-      return false
-    } else {
-      return true
-    }
-  }).catch(error => {
-    console.error('An error occurred:', error)
+  return new Promise((resolve, reject) => {
+    let current_approved_amount = 0
+    getApproval(contract, address, spender)
+      .then(approved_amount => {
+        current_approved_amount = approved_amount
+        if (approved_amount < amount) {
+          let left_to_approve = amount - approved_amount
+          left_to_approve = left_to_approve.toFixed(8)
+          console.log('Approving ' + left_to_approve + ' tokens')
+          const detail = JSON.stringify({
+            contractName: contract,
+            methodName: 'approve',
+            networkName: 'arko',
+            networkType: 'mainnet',
+            kwargs: {
+              amount: Number(left_to_approve),
+              to: spender
+            },
+            stampLimit: 100
+          })
+          document.dispatchEvent(new CustomEvent('lamdenWalletSendTx', { detail }))
+          resolve(false) // Approval initiated, resolving with false
+        } else {
+          console.log('Already approved ' + approved_amount + ' tokens')
+          resolve(true) // Already approved, resolving with true
+        }
+      })
+      .catch(error => {
+        console.error('An error occurred:', error)
+        reject(error) // Rejecting with the error
+      })
   })
 }
 
-function createPool () {
+async function createPool () {
   let token_list = [
     {
       contract: create_pool_token_1.dataset.contract,
@@ -53,28 +60,29 @@ function createPool () {
     }).showToast()
     return
   }
-  (async () => {
-    try {
-      const approved_token_1 = await approveToken(token_list[0]['contract'], token_list[0]['amount'], detail_decoded['contractName']);
-      const approved_token_2 = await approveToken(token_list[1]['contract'], token_list[1]['amount'], detail_decoded['contractName']);
-  
-      if (approved_token_1 && approved_token_2) {
-        const tx = JSON.stringify({
-          contractName: detail_decoded['contractName'],
-          methodName: 'create_pool',
-          networkName: 'arko',
-          networkType: 'mainnet',
-          kwargs: {
-            tokens: token_list,
-            fee: Number(fee)
-          },
-          stampLimit: 500,
-        });
-  
-        document.dispatchEvent(new CustomEvent('lamdenWalletSendTx', { tx }));
-      }
-    } catch (error) {
-      console.error('An error occurred:', error);
-    }
-  })();
+  let approved_token_1 = await approveToken(
+    token_list[0]['contract'],
+    token_list[0]['amount'],
+    detail_decoded['contractName']
+  )
+  let approved_token_2 = await approveToken(
+    token_list[1]['contract'],
+    token_list[1]['amount'],
+    detail_decoded['contractName']
+  )
+  console.log(approved_token_1, approved_token_2)
+  if (approved_token_1 && approved_token_2) {
+    const detail = JSON.stringify({
+      contractName: detail_decoded['contractName'],
+      methodName: 'create_pool',
+      networkName: 'arko',
+      networkType: 'mainnet',
+      kwargs: {
+        tokens: JSON.stringify(token_list),
+        fee: Number(fee)
+      },
+      stampLimit: 500
+    })
+    document.dispatchEvent(new CustomEvent('lamdenWalletSendTx', { detail }))
+  }
 }
