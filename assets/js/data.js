@@ -67,20 +67,19 @@ async function pullBalance(contract, address) {
       );
   
       const res = await response.json();
-  
+      console.log(res)
       let balance = 0;
       try {
         balance =
-          res[contract]['balances'][address]['__hash_self__'][spender]['__fixed__'];
+          res[contract]['balances'][address][spender]['__fixed__'];
       } catch {
         try{
-          balance = res[contract]['balances'][address]['__hash_self__'][spender]
+          balance = res[contract]['balances'][address][spender]
         }
         catch{
           balance = 0;
         }
       }
-  
       return Number(balance).toFixed(8);
     } catch (error) {
       console.error("Error fetching approval:", error);

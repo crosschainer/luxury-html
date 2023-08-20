@@ -1,7 +1,7 @@
 function approveToken (contract, amount, spender) {
   let current_approved_amount = 0
   getApproval(contract, address, spender).then(approved_amount => {
-    current_approved_amount = approved_amount
+    current_approved_amount = approved_amount;
     if (approved_amount < amount) {
       let left_to_approve = amount - approved_amount
       left_to_approve = left_to_approve.toFixed(8)
@@ -15,7 +15,7 @@ function approveToken (contract, amount, spender) {
           to: spender
         },
         stampLimit: 100
-      })
+      });
       document.dispatchEvent(new CustomEvent('lamdenWalletSendTx', { tx }))
       return false
     } else {
