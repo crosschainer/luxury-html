@@ -53,30 +53,28 @@ function createPool () {
     }).showToast()
     return
   }
-  approveToken(token_list[0]['contract'], token_list[0]['amount'], detail_decoded['contractName'])
-  .then(approved_token_1 => {
-    return approveToken(token_list[1]['contract'], token_list[1]['amount'], detail_decoded['contractName']);
-  })
-  .then(approved_token_2 => {
-    if (approved_token_1 && approved_token_2) {
-      const tx = JSON.stringify({
-        contractName: detail_decoded['contractName'],
-        methodName: 'create_pool',
-        networkName: 'arko',
-        networkType: 'mainnet',
-        kwargs: {
-          tokens: token_list,
-          fee: Number(fee)
-        },
-        stampLimit: 500,
-      });
-      document.dispatchEvent(new CustomEvent('lamdenWalletSendTx', { tx }));
+  (async () => {
+    try {
+      const approved_token_1 = await approveToken(token_list[0]['contract'], token_list[0]['amount'], detail_decoded['contractName']);
+      const approved_token_2 = await approveToken(token_list[1]['contract'], token_list[1]['amount'], detail_decoded['contractName']);
+  
+      if (approved_token_1 && approved_token_2) {
+        const tx = JSON.stringify({
+          contractName: detail_decoded['contractName'],
+          methodName: 'create_pool',
+          networkName: 'arko',
+          networkType: 'mainnet',
+          kwargs: {
+            tokens: token_list,
+            fee: Number(fee)
+          },
+          stampLimit: 500,
+        });
+  
+        document.dispatchEvent(new CustomEvent('lamdenWalletSendTx', { tx }));
+      }
+    } catch (error) {
+      console.error('An error occurred:', error);
     }
-  })
-  .catch(error => {
-    console.error('An error occurred:', error);
-  });
-
-
-  return
+  })();
 }
