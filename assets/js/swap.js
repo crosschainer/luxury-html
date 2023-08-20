@@ -27,11 +27,12 @@ const add_liquidity_buttons = document.querySelectorAll('.add-liquidity')
 const remove_liquidity_buttons = document.querySelectorAll('.remove-liquidity')
 const claim_rewards_buttons = document.querySelectorAll('.claim-rewards')
 const create_pool_button = document.getElementById('create-pool-button')
+const create_pool_token_1 = document.getElementById('create-pool-token-1')
+const create_pool_token_2 = document.getElementById('create-pool-token-2')
 
 // Custom Token Selector
 const tokenSelect = document.querySelector('.custom-select')
 const searchInput = tokenSelect.querySelector('.search-input')
-const tokenOptions = tokenSelect.querySelectorAll('.token-option')
 const tokenList = tokenSelect.querySelector('.token-list')
 const selectedToken = tokenSelect.querySelector('.selected-item')
 const selectButton = document.getElementById('select-button')
@@ -75,6 +76,70 @@ function updateSwapBalances () {
   })
   pullBalance(to_token, address).then(balance => {
     document.getElementById('to-balance').innerHTML = balance
+  })
+}
+
+function updateCreatePoolBalances () {
+  pullBalance(create_pool_token_1.dataset.contract, address).then(balance => {
+    document.getElementById('create-pool-balance-1').innerHTML = balance
+  })
+  pullBalance(create_pool_token_2.dataset.contract, address).then(balance => {
+    document.getElementById('create-pool-balance-2').innerHTML = balance
+  })
+}
+
+function handleTokenOptionClick(event) {
+  event.stopPropagation();
+  const option = event.currentTarget;
+  const tokenName = option.dataset.token;
+  const tokenIcon = option.querySelector('img').src;
+  const tokenContract = option.dataset.contract;
+
+  selectedToken.dataset.contract = tokenContract;
+  selectedToken.innerHTML = `
+    <img src="${tokenIcon}" alt="${tokenName}" class="token-image" />
+    <span>${tokenName}</span>
+  `;
+
+  tokenSelect.classList.remove('open');
+}
+
+function attachEventListenersToTokenOptions() {
+  const tokenOptions = document.querySelectorAll('.token-option');
+  tokenOptions.forEach(option => {
+    option.addEventListener('click', handleTokenOptionClick);
+  });
+}
+
+function ImgError(source){
+  source.src = "assets/img/no-icon.svg";
+  source.onerror = "";
+  return true;
+}
+
+function updateTokenList () {
+  pullAvailableTokens().then(tokens => {
+    tokenList.innerHTML = ''
+    tokens.forEach(token => {
+      if (token.TokenContract == 'currency') {
+        tokenList.innerHTML += `
+        <li class="token-option" data-token="${token.TokenName}" data-contract="${token.TokenContract}">
+          <img src="assets/img/lamden.svg" alt="${token.TokenName}" class="token-image" />
+          <span>${token.TokenName}</span>
+        </li>
+      `
+      }
+      else{
+      tokenList.innerHTML += `
+        <li class="token-option" data-token="${token.TokenName}" data-contract="${token.TokenContract}">
+          <img src="https://static.tauhq.com/file/wwwtauhqcom/img/token_logo/${token.TokenContract}.jpg" onerror="ImgError(this)" alt="${token.TokenName}" class="token-image" />
+          <span>${token.TokenName}</span>
+        </li>
+      `
+      }
+    })
+    // After updating the HTML, reattach event listeners
+    attachEventListenersToTokenOptions();
   })
 }
 
@@ -139,7 +204,7 @@ numericInputs.forEach(input => {
 document.addEventListener('readystatechange', () => {
   if (document.readyState == 'complete') {
     document.dispatchEvent(new CustomEvent('lamdenWalletGetInfo'))
-
+    updateTokenList()
     setTimeout(function () {
       connect_button.addEventListener('click', event => {
         event.preventDefault()
@@ -268,6 +333,30 @@ document.getElementById('remove-liquidity-balance').addEventListener('click', ev
     document.getElementById('remove-liquidity-balance').innerHTML
 })
 
+document.getElementById('create-pool-balance-1').addEventListener('click', event => {
+  event.preventDefault()
+  document.getElementById('create-pool-input-1').value =
+    document.getElementById('create-pool-balance-1').innerHTML
+})
+
+document.getElementById('create-pool-balance-2').addEventListener('click', event => {
+  event.preventDefault()
+  document.getElementById('create-pool-input-2').value =
+    document.getElementById('create-pool-balance-2').innerHTML
+})
+
+document.getElementById('create-pool-token-1').addEventListener('click', event => {
+  event.preventDefault()
+  MicroModal.show('token-select-modal')
+  opened_modal = 'create-pool-token-1'
+})
+
+document.getElementById('create-pool-token-2').addEventListener('click', event => {
+  event.preventDefault()
+  MicroModal.show('token-select-modal')
+  opened_modal = 'create-pool-token-2'
+})
+
 output_button.addEventListener('click', event => {
   event.preventDefault()
   MicroModal.show('token-select-modal')
@@ -284,6 +373,7 @@ create_pool_button.addEventListener('click', event => {
   event.preventDefault()
   connection = checkWalletConnection()
   if (connection) {
+    updateCreatePoolBalances()
     MicroModal.show('create-pool-modal')
     opened_modal = 'create-pool'
   }
@@ -344,29 +434,14 @@ searchInput.addEventListener('click', event => {
 
 searchInput.addEventListener('input', () => {
   const searchTerm = searchInput.value.trim().toLowerCase()
+  let tokenOptions = tokenList.querySelectorAll('.token-option')
 
   tokenOptions.forEach(option => {
     const tokenName = option.dataset.token.toLowerCase()
-    option.style.display = tokenName.includes(searchTerm) ? 'block' : 'none'
+    option.style.display = tokenName.includes(searchTerm) ? 'flex' : 'none'
   })
 })
 
-tokenOptions.forEach(option => {
-  option.addEventListener('click', () => {
-    event.stopPropagation()
-    const tokenName = option.dataset.token
-    const tokenIcon = option.querySelector('img').src
-    const tokenContract = option.dataset.contract
-
-    selectedToken.dataset.contract = tokenContract
-    selectedToken.innerHTML = `
-      <img src="${tokenIcon}" alt="${tokenName}" class="token-image" />
-      <span>${tokenName}</span>
-    `
-
-    tokenSelect.classList.remove('open')
-  })
-})
 
 slippageSave.addEventListener('click', event => {
   event.preventDefault()
@@ -419,6 +494,7 @@ selectButton.addEventListener('click', event => {
     document.getElementById('from-token-name').innerHTML =
       selectedToken.querySelector('span').innerHTML
     MicroModal.close('token-select-modal')
+    updateSwapBalances()
   }
 
   if (opened_modal == 'output') {
@@ -448,9 +524,68 @@ selectButton.addEventListener('click', event => {
     document.getElementById('to-token-name').innerHTML =
       selectedToken.querySelector('span').innerHTML
     MicroModal.close('token-select-modal')
+    updateSwapBalances()
   }
 
-  updateSwapBalances()
+  if (opened_modal == 'create-pool-token-1') {
+    const selectedContract = selectedToken.dataset.contract
+
+    // Check if the selected token is the same as the 'to_token'
+    if (selectedContract === create_pool_token_2.dataset.contract) {
+      // Display an error message or handle the case as needed
+      Toastify({
+        text: 'Cannot select the same token for both sides.',
+        duration: 3000,
+        gravity: 'bottom', // `top` or `bottom`
+        position: 'right', // `left`, `center` or `right`
+        stopOnFocus: false, // Prevents dismissing of toast on hover
+        style: {
+          background: '#FF2400',
+          color: '#fff'
+        },
+        onClick: function () {} // Callback after click
+      }).showToast()
+      return // Exit the function to prevent further actions
+    }
+
+    create_pool_token_1.dataset.contract = selectedContract
+    create_pool_token_1.src = selectedToken.querySelector('img').src
+    create_pool_token_1.alt = selectedToken.querySelector('span').innerHTML
+
+
+    updateCreatePoolBalances()
+    MicroModal.close('token-select-modal')
+  }
+
+  if (opened_modal == 'create-pool-token-2') {
+    const selectedContract = selectedToken.dataset.contract
+
+    // Check if the selected token is the same as the 'to_token'
+    if (selectedContract === create_pool_token_1.dataset.contract) {
+      // Display an error message or handle the case as needed
+      Toastify({
+        text: 'Cannot select the same token for both sides.',
+        duration: 3000,
+        gravity: 'bottom', // `top` or `bottom`
+        position: 'right', // `left`, `center` or `right`
+        stopOnFocus: false, // Prevents dismissing of toast on hover
+        style: {
+          background: '#FF2400',
+          color: '#fff'
+        },
+        onClick: function () {} // Callback after click
+      }).showToast()
+      return // Exit the function to prevent further actions
+    }
+
+    create_pool_token_2.dataset.contract = selectedContract
+    create_pool_token_2.src = selectedToken.querySelector('img').src
+    create_pool_token_2.alt = selectedToken.querySelector('span').innerHTML
+    updateCreatePoolBalances()
+    MicroModal.close('token-select-modal')
+  }
+
+
 })
 
 switch_button.addEventListener('click', event => {
@@ -471,3 +606,17 @@ switch_button.addEventListener('click', event => {
   to_token = temp_token
   updateSwapBalances()
 })
+
+
+// temp fix for close create pool modal bcz when token select was open on top of it, it was not closing anymore
+const closeCreatePoolModal = document.querySelector("#create-pool-modal .modal__close");
+const closeBtn = document.querySelector("#create-pool-modal .modal__btn-close");
+  closeCreatePoolModal.addEventListener("click", () => {
+    MicroModal.close("create-pool-modal");
+  }
+)
+closeBtn.addEventListener("click", () => {
+    MicroModal.close("create-pool-modal");
+  }
+)
+

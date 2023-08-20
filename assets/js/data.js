@@ -27,3 +27,27 @@ async function pullBalance(contract, address) {
       return "Error fetching balance";
     }
   }
+
+  async function pullAvailableTokens(){
+    try {
+      const response = await fetch(
+        'https://www.tauhq.com/api/v0/tokens'
+      );
+  
+      const res = await response.json();
+      // add 'currency' to the list of tokens
+      res.push({
+        "ID": 0,
+        "TokenContract": "currency",
+        "TokenName": "TAU",
+        "TokenSymbol": "TAU"
+
+      });
+
+  
+      return res;
+    } catch (error) {
+      console.error("Error fetching tokens:", error);
+      return "Error fetching tokens";
+    }
+  }

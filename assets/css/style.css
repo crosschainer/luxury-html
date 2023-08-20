@@ -262,6 +262,7 @@ li {
   padding-top: 10px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .data {
@@ -311,6 +312,18 @@ li {
     text-decoration: none;
     border-radius: 10px;
     transition: background-color 0.3s ease;
+}
+
+#create-pool-balance-1{
+  cursor: pointer;
+}
+
+#create-pool-balance-2{
+  cursor: pointer;
+}
+
+#token-select-modal{
+  z-index:99999;
 }
 
 .swap-button {
@@ -465,7 +478,8 @@ li {
 }
 
 .input-image {
-  max-width: 32px;
+  max-height: 32px;
+  width: auto;
   margin-left: 16px;
   cursor: pointer;
 }
@@ -663,7 +677,7 @@ header>div {
   max-width: 500px;
   max-height: 100vh;
   border-radius: 10px;
-
+  min-width: 400px;
   box-sizing: border-box;
   margin-left: 20px;
   margin-right: 20px;
@@ -820,6 +834,7 @@ header>div {
   border: 1px solid #ccc;
   border-radius: 5px;
   cursor: pointer;
+  overflow: hidden;
 }
 
 .selected-item .token-image {

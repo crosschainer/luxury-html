@@ -207,6 +207,10 @@
                   <span>1</span>
                 </div>
                 <div class="data">
+                  <span>Tokens:</span>
+                  <span>TAU / Luxuro</span>
+                </div>
+                <div class="data">
                   <span>Daily USD Volume:</span>
                   <span>$24.98m</span>
                 </div>
@@ -257,7 +261,7 @@
           <button class="modal__close" aria-label="Close modal" data-micromodal-close><img src="assets/img/x-icon.svg" alt="Close Icon" class="close-icon"></button>
         </div>
         <div class="modal__content" id="token-select-modal-content">
-          <p>Select a token to be used in the trade.</p>
+          <p>Select a token to be used</p>
           <div class="custom-select">
             <div class="selected-item" data-contract="con_luxuro">
               <img src="assets/img/logo.svg" alt="Token Image" class="token-image">
@@ -395,17 +399,21 @@
             <p class="mb-0">Balance: <span id="create-pool-balance-1">0.00000000</span></p>
           <div class="input-group-form">
             <input type="text" placeholder="0.00" id="create-pool-input-1" class="slippage-input numeric-input full-width-input">
-            <img src="assets/img/lamden.svg" alt="Token 1" class="input-image">
+            <img src="assets/img/lamden.svg" alt="Token 1" class="input-image" id="create-pool-token-1" data-contract="currency">
           </div>
           <p class="mb-0">Balance: <span id="create-pool-balance-2">0.00000000</span></p>
           <div class="input-group-form mb-0">
             <input type="text" placeholder="0.00" id="create-pool-input-2" class="slippage-input numeric-input full-width-input">
-            <img src="assets/img/logo.svg" alt="Token 2" class="input-image">
+            <img src="assets/img/logo.svg" alt="Token 2" class="input-image" id="create-pool-token-2" data-contract="con_luxuro">
+          </div>
+          <p class="mb-0">Fee % (0.1% - 10%) - Deducted from each trade</p>
+          <div class="input-group-form mb-0">
+            <input type="text" placeholder="0.00" id="create-pool-input-3" class="slippage-input numeric-input full-width-input">
           </div>
         </div>
         <div class="modal__footer">
           <button class="modal__btn modal__btn-primary" id="create-pool">Create Pool</button>
-          <button class="modal__btn" data-micromodal-close aria-label="Close this dialog window">
+          <button class="modal__btn modal__btn-close" data-micromodal-close aria-label="Close this dialog window">
             Close
           </button>
         </div>
