@@ -13,7 +13,7 @@ function approveToken (contract, amount, spender) {
           kwargs: {
             amount: Number(left_to_approve),
             to: spender
-          }
+          },
           stampLimit: 100,
         })
         document.dispatchEvent(new CustomEvent('lamdenWalletSendTx', { detail }))
@@ -56,7 +56,8 @@ function createPool(){
             kwargs: {
               tokens : token_list,
                 fee : Number(fee)
-            }
+            },
+            stampLimit: 500,
           })
           document.dispatchEvent(new CustomEvent('lamdenWalletSendTx', { detail }))
     }
