@@ -14,6 +14,7 @@ function approveToken (contract, amount, spender) {
             amount: Number(left_to_approve),
             to: spender
           }
+          stampLimit: 100,
         })
         document.dispatchEvent(new CustomEvent('lamdenWalletSendTx', { detail }))
         return false
