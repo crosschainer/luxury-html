@@ -37,11 +37,11 @@ async function createPool () {
   let token_list = [
     {
       contract: create_pool_token_1.dataset.contract,
-      amount: document.getElementById('create-pool-input-1').value
+      amount: Number(document.getElementById('create-pool-input-1').value)
     },
     {
       contract: create_pool_token_2.dataset.contract,
-      amount: document.getElementById('create-pool-input-2').value
+      amount: Number(document.getElementById('create-pool-input-2').value)
     }
   ]
   let fee = document.getElementById('create-pool-input-3').value
