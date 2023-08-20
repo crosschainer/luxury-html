@@ -45,7 +45,7 @@
       <h1>Welcome to Luxuro</h1>
       <p style="font-weight: normal">
         Luxuro is a cutting-edge decentralized exchange, revolutionizing the
-        way you trade stablecoins and similar assets on the Lamden blockchain
+        way you trade tokens and assets on the Lamden blockchain
         with unparalleled efficiency and minimal slippage.
       </p>
       <div class="text-center">
@@ -56,7 +56,7 @@
       <h1>What is Luxuro?</h1>
       <p>
         Luxuro transcends traditional decentralized finance, redefining the
-        way stablecoins and similar assets are traded on the Lamden
+        way assets are traded on the Lamden
         blockchain. Immerse yourself in a sophisticated ecosystem that boasts
         an array of features designed to optimize your trading journey.
       </p>
@@ -76,14 +76,7 @@
         empowering you to extract the utmost value from every trade and make
         your assets work harder for you.
       </p>
-      <h2>A Haven of Stability:</h2>
-
-      <p>
-        Specializing in stablecoin trading, Luxuro provides a secure
-        environment for managing assets pegged to real-world currencies.
-        Amidst the volatile crypto landscape, Luxuro offers stability, making
-        it an ideal platform to manage your wealth and strategic investments.
-      </p>
+      
       <h2>Empowering Decentralization:</h2>
 
       <p>
@@ -179,11 +172,15 @@
     </section>
     <section class="content" id="pools">
       <h1>Pools</h1>
+      <div class="btns-pools">
+        <a href="#" id="create-pool-button" class="create-pool-button">Create Pool</a>
+      </div>
       <div class="table-container">
         <table class="pool-table">
           <thead>
             <tr>
-              <th>Pool</th>
+              <th>Pool ID</th>
+              <th>Tokens</th>
               <th>Max APY</th>
               <th>Volume</th>
               <th>TVL</th>
@@ -192,7 +189,8 @@
           </thead>
           <tbody>
             <tr class="pool-row">
-              <td class="pool-info">TAULUSD</td>
+              <td class="pool-info">1</td>
+              <td class="pool-info">TAU / Luxuro</td>
               <td class="pool-info">0.20%</td>
               <td class="pool-info">$24.98m</td>
               <td class="pool-info">$321.55m</td>
@@ -203,10 +201,10 @@
               </td>
             </tr>
             <tr class="pool-details">
-              <td colspan="5">
+              <td colspan="6">
                 <div class="data">
                   <span>Pool ID:</span>
-                  <span>TAULUSD</span>
+                  <span>1</span>
                 </div>
                 <div class="data">
                   <span>Daily USD Volume:</span>
@@ -259,7 +257,7 @@
           <button class="modal__close" aria-label="Close modal" data-micromodal-close><img src="assets/img/x-icon.svg" alt="Close Icon" class="close-icon"></button>
         </div>
         <div class="modal__content" id="token-select-modal-content">
-          <p>Select a verified token to be used in the trade.</p>
+          <p>Select a token to be used in the trade.</p>
           <div class="custom-select">
             <div class="selected-item" data-contract="con_luxuro">
               <img src="assets/img/logo.svg" alt="Token Image" class="token-image">
@@ -374,6 +372,39 @@
         </div>
         <div class="modal__footer">
           <button class="modal__btn modal__btn-primary" id="remove-liquidity">Remove Liquidity</button>
+          <button class="modal__btn" data-micromodal-close aria-label="Close this dialog window">
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal micromodal-slide" id="create-pool-modal" aria-hidden="true">
+    <div class="modal__overlay" tabindex="-1" data-micromodal-close>
+      <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="create-pool-modal-title">
+        <div class="modal__header">
+          <h2 class="modal__title" id="create-pool-modal-title">
+            Create Pool
+          </h2>
+          <button class="modal__close" aria-label="Close modal" data-micromodal-close><img src="assets/img/x-icon.svg" alt="Close Icon" class="close-icon"></button>
+        </div>
+        <div class="modal__content" id="create-pool-modal-content">
+          <p>Creating a pool will make a new market. You will be the first liquidity provider. You can create a pool
+            for any two tokens.</p>
+            <p class="mb-0">Balance: <span id="create-pool-balance-1">0.00000000</span></p>
+          <div class="input-group-form">
+            <input type="text" placeholder="0.00" id="create-pool-input-1" class="slippage-input numeric-input full-width-input">
+            <img src="assets/img/lamden.svg" alt="Token 1" class="input-image">
+          </div>
+          <p class="mb-0">Balance: <span id="create-pool-balance-2">0.00000000</span></p>
+          <div class="input-group-form mb-0">
+            <input type="text" placeholder="0.00" id="create-pool-input-2" class="slippage-input numeric-input full-width-input">
+            <img src="assets/img/logo.svg" alt="Token 2" class="input-image">
+          </div>
+        </div>
+        <div class="modal__footer">
+          <button class="modal__btn modal__btn-primary" id="create-pool">Create Pool</button>
           <button class="modal__btn" data-micromodal-close aria-label="Close this dialog window">
             Close
           </button>

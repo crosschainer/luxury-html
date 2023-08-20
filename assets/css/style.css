@@ -295,6 +295,24 @@ li {
   margin-right: auto;
 }
 
+.btns-pools{
+  margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: flex-end;
+
+}
+
+.create-pool-button {
+  display: inline-block;
+    padding: 10px 20px;
+    background-color: #222;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+}
+
 .swap-button {
   width: 100%;
   text-align: center;

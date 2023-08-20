@@ -3,7 +3,7 @@ const detail = JSON.stringify({
   appName: 'Luxuro',
   version: '1.0.0',
   logo: 'logo.svg',
-  contractName: 'currency',
+  contractName: 'con_test_swap1',
   networkType: 'mainnet',
   networkName: 'arko'
 })
@@ -26,6 +26,7 @@ const slippage_button = document.getElementById('slippage-button')
 const add_liquidity_buttons = document.querySelectorAll('.add-liquidity')
 const remove_liquidity_buttons = document.querySelectorAll('.remove-liquidity')
 const claim_rewards_buttons = document.querySelectorAll('.claim-rewards')
+const create_pool_button = document.getElementById('create-pool-button')
 
 // Custom Token Selector
 const tokenSelect = document.querySelector('.custom-select')
@@ -188,8 +189,8 @@ document.addEventListener("lamdenWalletTxStatus", (response) => {
       position: 'right', // `left`, `center` or `right`
       stopOnFocus: false, // Prevents dismissing of toast on hover
       style: {
-        background: '#9bff00',
-        color: '#000'
+        background: '#1A8917',
+        color: '#fff'
       },
       onClick: function () {} // Callback after click
     }).showToast()
@@ -277,6 +278,15 @@ slippage_button.addEventListener('click', event => {
   event.preventDefault()
   MicroModal.show('slippage-settings-modal')
   opened_modal = 'slippage'
+})
+
+create_pool_button.addEventListener('click', event => {
+  event.preventDefault()
+  connection = checkWalletConnection()
+  if (connection) {
+    MicroModal.show('create-pool-modal')
+    opened_modal = 'create-pool'
+  }
 })
 
 add_liquidity_buttons.forEach(button => {
