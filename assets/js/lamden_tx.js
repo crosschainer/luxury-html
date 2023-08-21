@@ -86,3 +86,27 @@ async function createPool () {
     document.dispatchEvent(new CustomEvent('lamdenWalletSendTx', { detail }))
   }
 }
+
+async function swap () {
+  let approved_token_1 = await approveToken(
+    from_token,
+    input_amount.value,
+    detail_decoded['contractName']
+  )
+  if (approved_token_1) {
+    const detail = JSON.stringify({
+      contractName: detail_decoded['contractName'],
+      methodName: 'swap',
+      networkName: 'arko',
+      networkType: 'mainnet',
+      kwargs: {
+        token_from: from_token,
+        token_to: to_token,
+        amount: Number(input_amount.value),
+        max_slippage: Number(slippage_tolerance)
+      },
+      stampLimit: 500
+    })
+    document.dispatchEvent(new CustomEvent('lamdenWalletSendTx', { detail }))
+  }
+}

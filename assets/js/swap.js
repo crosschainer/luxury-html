@@ -363,18 +363,7 @@ swap_button.addEventListener('click', event => {
   event.preventDefault()
   connection = checkWalletConnection()
   if (connection) {
-    Toastify({
-      text: 'Not implemented!',
-      duration: 3000,
-      gravity: 'bottom', // `top` or `bottom`
-      position: 'right', // `left`, `center` or `right`
-      stopOnFocus: false, // Prevents dismissing of toast on hover
-      style: {
-        background: '#FF2400',
-        color: '#fff'
-      },
-      onClick: function () {} // Callback after click
-    }).showToast()
+    swap()
   }
 })
 
