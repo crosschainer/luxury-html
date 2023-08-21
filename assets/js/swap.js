@@ -355,6 +355,7 @@ document.addEventListener('lamdenWalletTxStatus', response => {
     }).showToast()
   }
   checkApprovalsCreatePool();
+  checkApprovalSwap();
   document.dispatchEvent(new CustomEvent('lamdenWalletGetInfo'))
 })
 
