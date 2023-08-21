@@ -22,6 +22,8 @@ const input_button = document.getElementById('input-image')
 const output_button = document.getElementById('output-image')
 const switch_button = document.getElementById('switch-button')
 const slippage_button = document.getElementById('slippage-button')
+const input_amount = document.getElementById('input-amount')
+const output_amount = document.getElementById('output-amount')
 
 // Pools page
 const add_liquidity_buttons = document.querySelectorAll('.add-liquidity')
@@ -117,6 +119,34 @@ async function checkApprovalsCreatePool() {
       approval_2 >= create_pool_input_2.value
     ) {
       create_pool.innerHTML = "Create Pool";
+    }
+    return true;
+  } catch (error) {
+    console.error('An error occurred:', error);
+    // Handle the error if needed
+    return false;
+  }
+}
+
+async function checkApprovalSwap() {
+  try {
+    const approval_1 = await getApproval(
+      from_token,
+      address,
+      detail_decoded.contractName
+    );
+    
+    
+    if (approval_1 > 0) {
+      swap_button.innerHTML =
+        "Approve";
+    }
+    
+    
+    if (
+      approval_1 >= input_amount.value
+    ) {
+      swap_button.innerHTML = "Swap";
     }
     return true;
   } catch (error) {
@@ -232,6 +262,9 @@ numericInputs.forEach(input => {
     if (event.target.id == 'create-pool-input-1' || event.target.id == 'create-pool-input-2') {
       checkApprovalsCreatePool()
     }
+    if (event.target.id == 'input-amount') {
+      checkApprovalSwap()
+    }
   })
   input.addEventListener('paste', event => {
     // Delay the sanitization process to handle pasted content
@@ -239,6 +272,9 @@ numericInputs.forEach(input => {
       sanitizeInput(event.target)
       if (event.target.id == 'create-pool-input-1' || event.target.id == 'create-pool-input-2') {
         checkApprovalsCreatePool()
+      }
+      if (event.target.id == 'input-amount') {
+        checkApprovalSwap()
       }
     }, 0)
   })
@@ -351,12 +387,14 @@ document.getElementById('from-balance').addEventListener('click', event => {
   event.preventDefault()
   document.getElementById('input-amount').value =
     document.getElementById('from-balance').innerHTML
+    checkApprovalSwap()
 })
 
 document.getElementById('to-balance').addEventListener('click', event => {
   event.preventDefault()
   document.getElementById('output-amount').value =
     document.getElementById('to-balance').innerHTML
+    checkApprovalSwap()
 })
 
 document
