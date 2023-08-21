@@ -6,7 +6,7 @@ function approveToken (contract, amount, spender) {
         current_approved_amount = approved_amount
         console.log('Approved ' + approved_amount + ' tokens')
         console.log('Need to approve ' + amount + ' tokens')
-        let left_to_approve =  approved_amount - amount;
+        let left_to_approve =  Math.Abs(approved_amount - amount);
         if (approved_amount < amount && left_to_approve > 0) {
           
           let left_to_approve =  amount - approved_amount;
