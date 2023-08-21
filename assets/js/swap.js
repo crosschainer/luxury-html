@@ -108,7 +108,7 @@ async function checkApprovalsCreatePool() {
       detail_decoded.contractName
     );
 
-    if (approval_1 > 0 || approval_2 > 0) {
+    if (approval_1 < create_pool_input_1.value || approval_2 < create_pool_input_2.value) {
       create_pool.innerHTML =
         "Approve Tokens";
     }
@@ -137,11 +137,9 @@ async function checkApprovalSwap() {
     );
     
     
-    if (approval_1 > 0) {
-      swap_button.innerHTML =
-        "Approve";
+    if (approval_1 < input_amount.value) {
+      swap_button.innerHTML = "Approve Tokens";
     }
-    
     
     if (
       approval_1 >= input_amount.value
