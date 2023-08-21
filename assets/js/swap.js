@@ -106,18 +106,23 @@ async function checkApprovalsCreatePool() {
       detail_decoded.contractName
     );
 
-    if (approval_1 < create_pool_token_1.value) {
-      create_pool.innerHTML = 'Approve ' + create_pool_token_1.value + ' ' + create_pool_token_1.alt
+    if (approval_1 > 0 || approval_2 > 0) {
+      create_pool.innerHTML =
+        "Approve Tokens";
     }
-    if (approval_2 < create_pool_token_2.value) {
-      create_pool.innerHTML = 'Approve ' + create_pool_token_2.value + ' ' + create_pool_token_2.alt
+    
+    
+    if (
+      approval_1 >= create_pool_input_1.value &&
+      approval_2 >= create_pool_input_2.value
+    ) {
+      create_pool.innerHTML = "Create Pool";
     }
-    if (approval_1 >= create_pool_token_1.value && approval_2 >= create_pool_token_2.value) {
-      create_pool.innerHTML = 'Create Pool'
-    }
+    return true;
   } catch (error) {
     console.error('An error occurred:', error);
     // Handle the error if needed
+    return false;
   }
 }
 
@@ -313,6 +318,7 @@ document.addEventListener('lamdenWalletTxStatus', response => {
       onClick: function () {} // Callback after click
     }).showToast()
   }
+  checkApprovalsCreatePool();
   document.dispatchEvent(new CustomEvent('lamdenWalletGetInfo'))
 })
 
@@ -383,6 +389,7 @@ document
     event.preventDefault()
     document.getElementById('create-pool-input-1').value =
       document.getElementById('create-pool-balance-1').innerHTML
+    checkApprovalsCreatePool;
   })
 
 document
@@ -391,6 +398,7 @@ document
     event.preventDefault()
     document.getElementById('create-pool-input-2').value =
       document.getElementById('create-pool-balance-2').innerHTML
+    checkApprovalsCreatePool;
   })
 
 document
