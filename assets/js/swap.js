@@ -129,6 +129,7 @@ async function checkApprovalsCreatePool() {
 }
 
 async function checkApprovalSwap() {
+  if(address != null){
   try {
     const approval_1 = await getApproval(
       from_token,
@@ -152,6 +153,7 @@ async function checkApprovalSwap() {
     // Handle the error if needed
     return false;
   }
+}
 }
 
 function handleTokenOptionClick (event) {
