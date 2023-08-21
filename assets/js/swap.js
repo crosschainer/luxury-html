@@ -389,7 +389,7 @@ document
     event.preventDefault()
     document.getElementById('create-pool-input-1').value =
       document.getElementById('create-pool-balance-1').innerHTML
-    checkApprovalsCreatePool;
+    checkApprovalsCreatePool();
   })
 
 document
@@ -398,7 +398,7 @@ document
     event.preventDefault()
     document.getElementById('create-pool-input-2').value =
       document.getElementById('create-pool-balance-2').innerHTML
-    checkApprovalsCreatePool;
+    checkApprovalsCreatePool();
   })
 
 document
