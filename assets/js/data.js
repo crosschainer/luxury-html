@@ -82,3 +82,17 @@ async function pullBalance(contract, address) {
       return "Error fetching approval";
     }
   }
+
+  function getTokenImage(contract) {
+    try {
+      if(contract == 'currency'){
+        return 'assets/img/lamden.svg';
+      }
+      else{
+        return 'https://static.tauhq.com/file/wwwtauhqcom/img/token_logo/' + contract + '.jpg';
+      }
+    } catch (error) {
+      console.error("Error fetching image:", error);
+      return "Error fetching image";
+    }
+  }

@@ -35,6 +35,8 @@ const create_pool_token_1 = document.getElementById('create-pool-token-1')
 const create_pool_token_2 = document.getElementById('create-pool-token-2')
 const create_pool_input_1 = document.getElementById('create-pool-input-1')
 const create_pool_input_2 = document.getElementById('create-pool-input-2')
+const add_liquidity_input_1 = document.getElementById('add-liquidity-input-1')
+const add_liquidity_input_2 = document.getElementById('add-liquidity-input-2')
 const create_pool = document.getElementById('create-pool')
 
 // Custom Token Selector
@@ -255,6 +257,12 @@ function updateAddLiquidityModal (tokens) {
   pullBalance(tokens[1], address).then(balance => {
     document.getElementById('add-liquidity-balance-2').innerHTML = balance
   })
+  document.getElementById('add-liquidity-token-1').src = getTokenImage(tokens[0]);
+  document.getElementById('add-liquidity-token-2').src = getTokenImage(tokens[1]);
+  document.getElementById('add-liquidity-token-1').alt = tokens[0];
+  document.getElementById('add-liquidity-token-2').alt = tokens[1];
+  document.getElementById('add-liquidity-token-1').dataset.contract = tokens[0];
+  document.getElementById('add-liquidity-token-2').dataset.contract = tokens[1];
 }
 
 numericInputs.forEach(input => {
@@ -509,6 +517,7 @@ add_liquidity_buttons.forEach(button => {
     if (connection) {
       tokens = event.target.dataset.tokens.split(';')
       updateAddLiquidityModal(tokens)
+      
       MicroModal.show('add-liquidity-modal')
       opened_modal = 'add-liquidity'
     }

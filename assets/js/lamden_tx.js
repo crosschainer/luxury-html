@@ -94,6 +94,44 @@ async function createPool () {
   }
 }
 
+async function addLiquidity () {
+  let token_list = [
+    {
+      contract: document.getElementById('add-liquidity-token-1').dataset.contract,
+      amount: Number(add_liquidity_input_1.value)
+    },
+    {
+      contract: document.getElementById('add-liquidity-token-2').dataset.contract,
+      amount: Number(add_liquidity_input_2.value)
+    }
+  ]
+  
+  let approved_token_1 = await approveToken(
+    token_list[0]['contract'],
+    token_list[0]['amount'],
+    detail_decoded['contractName']
+  )
+  let approved_token_2 = await approveToken(
+    token_list[1]['contract'],
+    token_list[1]['amount'],
+    detail_decoded['contractName']
+  )
+  console.log(approved_token_1, approved_token_2)
+  if (approved_token_1 && approved_token_2) {
+    const detail = JSON.stringify({
+      contractName: detail_decoded['contractName'],
+      methodName: 'add_liquidity',
+      networkName: 'arko',
+      networkType: 'mainnet',
+      kwargs: {
+        tokens: JSON.stringify(token_list)
+      },
+      stampLimit: 500
+    })
+    document.dispatchEvent(new CustomEvent('lamdenWalletSendTx', { detail }))
+  }
+}
+
 async function swap () {
   let approved_token_1 = await approveToken(
     from_token,
