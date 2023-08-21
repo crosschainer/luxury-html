@@ -6,7 +6,8 @@ function approveToken (contract, amount, spender) {
         current_approved_amount = approved_amount
         console.log('Approved ' + approved_amount + ' tokens')
         console.log('Need to approve ' + amount + ' tokens')
-        if (amount < approved_amount) {
+        let left_to_approve =  approved_amount - amount;
+        if (approved_amount < amount && left_to_approve > 0) {
           
           let left_to_approve =  amount - approved_amount;
           left_to_approve = left_to_approve.toFixed(8)
