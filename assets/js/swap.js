@@ -37,7 +37,10 @@ const create_pool_input_1 = document.getElementById('create-pool-input-1')
 const create_pool_input_2 = document.getElementById('create-pool-input-2')
 const add_liquidity_input_1 = document.getElementById('add-liquidity-input-1')
 const add_liquidity_input_2 = document.getElementById('add-liquidity-input-2')
+const add_liquidity_token_1 = document.getElementById('add-liquidity-token-1')
+const add_liquidity_token_2 = document.getElementById('add-liquidity-token-2')
 const create_pool = document.getElementById('create-pool')
+
 
 // Custom Token Selector
 const tokenSelect = document.querySelector('.custom-select')
@@ -159,6 +162,38 @@ async function checkApprovalSwap() {
 }
 }
 
+async function checkApprovalAddLiquidity() {
+  try {
+    const approval_1 = await getApproval(
+      add_liquidity_token_1.dataset.contract,
+      address,
+      detail_decoded.contractName
+    );
+    const approval_2 = await getApproval(
+      add_liquidity_token_2.dataset.contract,
+      address,
+      detail_decoded.contractName
+    );
+
+    if (approval_1 < add_liquidity_input_1.value || approval_2 < add_liquidity_input_2.value) {
+      remove_liquidity_btn.innerHTML = "Approve Tokens";
+    }
+
+    if (
+      approval_1 >= add_liquidity_input_1.value &&
+      approval_2 >= add_liquidity_input_2.value
+    ) {
+      remove_liquidity_btn.innerHTML = "Remove Liquidity";
+    }
+    return true;
+  } catch (error) {
+    console.error('An error occurred:', error);
+    // Handle the error if needed
+    return false;
+  }
+}
+
+
 function handleTokenOptionClick (event) {
   event.stopPropagation()
   const option = event.currentTarget
@@ -274,6 +309,9 @@ numericInputs.forEach(input => {
     if (event.target.id == 'input-amount') {
       checkApprovalSwap()
     }
+    if (event.target.id == 'add-liquidity-input-1' || event.target.id == 'add-liquidity-input-2') {
+      checkApprovalAddLiquidity()
+    }
   })
   input.addEventListener('paste', event => {
     // Delay the sanitization process to handle pasted content
@@ -284,6 +322,9 @@ numericInputs.forEach(input => {
       }
       if (event.target.id == 'input-amount') {
         checkApprovalSwap()
+      }
+      if (event.target.id == 'add-liquidity-input-1' || event.target.id == 'add-liquidity-input-2') {
+        checkApprovalAddLiquidity()
       }
     }, 0)
   })
@@ -379,6 +420,7 @@ document.addEventListener('lamdenWalletTxStatus', response => {
   }
   checkApprovalsCreatePool();
   checkApprovalSwap();
+  checkApprovalAddLiquidity();
   document.dispatchEvent(new CustomEvent('lamdenWalletGetInfo'))
 })
 
