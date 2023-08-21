@@ -352,6 +352,20 @@ document.addEventListener('lamdenWalletTxStatus', response => {
       onClick: function () {} // Callback after click
     }).showToast()
   }
+  if (response.detail.data.resultInfo.title == 'Transaction Cancelled') {
+    Toastify({
+      text: 'The transaction was cancelled.',
+      duration: 3000,
+      gravity: 'bottom', // `top` or `bottom`
+      position: 'right', // `left`, `center` or `right`
+      stopOnFocus: false, // Prevents dismissing of toast on hover
+      style: {
+        background: '#FF2400',
+        color: '#fff'
+      },
+      onClick: function () {} // Callback after click
+    }).showToast()
+  }
   checkApprovalsCreatePool();
   checkApprovalSwap();
   document.dispatchEvent(new CustomEvent('lamdenWalletGetInfo'))
