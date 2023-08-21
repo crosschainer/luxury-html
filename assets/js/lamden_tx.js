@@ -117,3 +117,29 @@ async function swap () {
     document.dispatchEvent(new CustomEvent('lamdenWalletSendTx', { detail }))
   }
 }
+
+async function removeLiquidity(){
+  const detail = JSON.stringify({
+    contractName: detail_decoded['contractName'],
+    methodName: 'remove_liquidity',
+    networkName: 'arko',
+    networkType: 'mainnet',
+    kwargs: {
+      amount: Number(document.getElementById('remove-liquidity-input').value),
+    },
+    stampLimit: 500
+  })
+  document.dispatchEvent(new CustomEvent('lamdenWalletSendTx', { detail }))
+}
+
+async function claimRewards(){
+  const detail = JSON.stringify({
+    contractName: detail_decoded['contractName'],
+    methodName: 'claim_rewards',
+    networkName: 'arko',
+    networkType: 'mainnet',
+    kwargs: {},
+    stampLimit: 500
+  })
+  document.dispatchEvent(new CustomEvent('lamdenWalletSendTx', { detail }))
+}

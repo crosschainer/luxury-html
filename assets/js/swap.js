@@ -28,6 +28,7 @@ const output_amount = document.getElementById('output-amount')
 // Pools page
 const add_liquidity_buttons = document.querySelectorAll('.add-liquidity')
 const remove_liquidity_buttons = document.querySelectorAll('.remove-liquidity')
+const remove_liquidity_btn = document.getElementById('remove-liquidity-btn')
 const claim_rewards_buttons = document.querySelectorAll('.claim-rewards')
 const create_pool_button = document.getElementById('create-pool-button')
 const create_pool_token_1 = document.getElementById('create-pool-token-1')
@@ -485,6 +486,14 @@ create_pool_button.addEventListener('click', event => {
   }
 })
 
+remove_liquidity_btn.addEventListener('click', event => {
+  event.preventDefault()
+  connection = checkWalletConnection()
+  if (connection) {
+    removeLiquidity()
+  }
+})
+
 create_pool.addEventListener('click', event => {
   event.preventDefault()
   connection = checkWalletConnection()
@@ -522,18 +531,7 @@ claim_rewards_buttons.forEach(button => {
     event.preventDefault()
     connection = checkWalletConnection()
     if (connection) {
-      Toastify({
-        text: 'Not implemented!',
-        duration: 3000,
-        gravity: 'bottom', // `top` or `bottom`
-        position: 'right', // `left`, `center` or `right`
-        stopOnFocus: false, // Prevents dismissing of toast on hover
-        style: {
-          background: '#FF2400',
-          color: '#fff'
-        },
-        onClick: function () {} // Callback after click
-      }).showToast()
+      claimRewards()
     }
   })
 })
