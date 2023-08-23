@@ -3,7 +3,7 @@ const detail = JSON.stringify({
   appName: 'Luxuro',
   version: '1.0.0',
   logo: 'logo.svg',
-  contractName: 'con_test_swap1',
+  contractName: 'con_test_swap2',
   networkType: 'mainnet',
   networkName: 'arko'
 })
