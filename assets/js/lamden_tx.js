@@ -85,7 +85,7 @@ async function createPool () {
       networkName: 'arko',
       networkType: 'mainnet',
       kwargs: {
-        tokens: JSON.stringify(token_list),
+        tokens: token_list,
         fee: Number(fee)
       },
       stampLimit: 500
