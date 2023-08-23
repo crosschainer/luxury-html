@@ -24,6 +24,7 @@ const switch_button = document.getElementById('switch-button')
 const slippage_button = document.getElementById('slippage-button')
 const input_amount = document.getElementById('input-amount')
 const output_amount = document.getElementById('output-amount')
+const pool_id = document.getElementById('pool-id')
 
 // Pools page
 const add_liquidity_buttons = document.querySelectorAll('.add-liquidity')
@@ -40,6 +41,7 @@ const add_liquidity_input_2 = document.getElementById('add-liquidity-input-2')
 const add_liquidity_token_1 = document.getElementById('add-liquidity-token-1')
 const add_liquidity_token_2 = document.getElementById('add-liquidity-token-2')
 const create_pool = document.getElementById('create-pool')
+const pool_table_body = document.getElementById('pool-table-body')
 
 
 // Custom Token Selector
@@ -248,6 +250,73 @@ async function updateTokenList () {
   })
 }
 
+async function updatePools() {
+  pool_table_body.innerHTML = '';
+  pullPools().then(pools => {
+    pools.forEach(pool => {
+      pool_table_body.innerHTML += `
+      <tr class="pool-row">
+              <td class="pool-info">${pool}</td>
+              <td class="pool-info">TAU / Luxuro</td>
+              <td class="pool-info">0.20%</td>
+              <td class="pool-info">$24.98m</td>
+              <td class="pool-info">$321.55m</td>
+              <td class="pool-info">
+                <div class="icon-right-arrow">
+                  <img src="assets/img/right-arrow.svg" class="arrow" alt="Right Arrow" />
+                </div>
+              </td>
+            </tr>
+            <tr class="pool-details">
+              <td colspan="6">
+                <div class="data">
+                  <span>Pool ID:</span>
+                  <span>1</span>
+                </div>
+                <div class="data">
+                  <span>Tokens:</span>
+                  <span>TAU / Luxuro</span>
+                </div>
+                <div class="data">
+                  <span>Daily USD Volume:</span>
+                  <span>$24.98m</span>
+                </div>
+                <div class="data">
+                  <span>Liquidity utilization:</span>
+                  <span>27,820.02%</span>
+                </div>
+                <div class="data">
+                  <span>Fees:</span>
+                  <span>0.60%</span>
+                </div>
+                <div class="data mt-30px">
+                  <span class="bold">Your Position</span>
+                </div>
+                <div class="data">
+                  <span>Liquidity Points:</span>
+                  <span>0 LP (0.0000 TAU/0.0000 USD)</span>
+                </div>
+                <div class="data">
+                  <span>Share:</span>
+                  <span>0%</span>
+                </div>
+                <div class="data">
+                  <span>Rewards:</span>
+                  <span>0.0000 TAU / 0.0000 LUSD</span>
+                </div>
+                <div class="data btns-pool">
+                  <a href="#" class="cta-button m-0 add-liquidity" data-tokens="currency;con_luxuro">Add Liquidity</a>
+                  <a href="#" class="cta-button m-0 remove-liquidity">Remove Liquidity</a>
+                  <a href="#" class="cta-button me-0 claim-rewards">Claim Rewards</a>
+                </div>
+              </td>
+            </tr>
+      `
+    })
+  })
+}
+    
+
 function checkWalletConnection () {
   if (installed == false) {
     Toastify({
@@ -334,6 +403,7 @@ document.addEventListener('readystatechange', () => {
   if (document.readyState == 'complete') {
     document.dispatchEvent(new CustomEvent('lamdenWalletGetInfo'))
     updateTokenList()
+    updatePools()
     setTimeout(function () {
       connect_button.addEventListener('click', event => {
         event.preventDefault()

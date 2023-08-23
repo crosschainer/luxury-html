@@ -145,6 +145,7 @@ async function swap () {
       networkName: 'arko',
       networkType: 'mainnet',
       kwargs: {
+        pool_id: Number(pool_id.innerText),
         token_from: from_token,
         token_to: to_token,
         amount: Number(input_amount.value),
